@@ -165,188 +165,187 @@
 </head>
 
 <body class="bg-gray-50 font-sans" x-data="kabatiyouthApp()">
-    <!-- Header -->
-    <header class="bg-primary text-white sticky top-0 shadow-lg z-50">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <div>
-                        <a href="#home" aria-label="Kabati Youth FC Home"><img src="tmlogo/kabati.png" alt="Kabati Youth FC Logo" class="h-12 md:h-16"></a>
-                    </div>
-                    <div class="hidden md:block">
-     
-                    </div>
+<!-- Header -->
+<header class="bg-white text-red-900 sticky top-0 shadow-lg z-50">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div>
+                    <a href="#home" aria-label="Kabati Youth FC Home"><img src="tmlogo/kabati.png" alt="Kabati Youth FC Logo" class="h-12 md:h-16"></a>
                 </div>
-
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex items-center space-x-1" aria-label="Main navigation">
-                    <a href="#" @click="activeTab = 'home'"
-                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                        :class="activeTab === 'home' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
-                        aria-current="page">Home</a>
-
-                    <a href="#" @click="activeTab = 'about'"
-                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                        :class="activeTab === 'about' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">About
-                        Us</a>
-
-                    <!-- Team Dropdown -->
-                    <div class="dropdown relative">
-                        <button class="px-4 py-2 rounded-lg font-medium flex items-center transition-all duration-200"
-                            :class="activeTab.startsWith('team') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
-                            aria-expanded="false" aria-haspopup="true">
-                            Team <i class="fas fa-chevron-down ml-2 text-xs" aria-hidden="true"></i>
-                        </button>
-                        <div
-                            class="dropdown-menu absolute hidden bg-white text-red-800 rounded-lg shadow-xl mt-1 w-48 py-2 z-50"
-                            role="menu">
-                            <a href="#" @click="activeTab = 'team-first'"
-                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">First Team</a>
-                            <a href="#" @click="activeTab = 'team-youth'"
-                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Youth Team</a>
-                            <a href="#" @click="activeTab = 'team-women'"
-                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Women Team</a>
-                        </div>
-                    </div>
-
-                    <!-- Latest News Dropdown -->
-                    <div class="dropdown relative">
-                        <button class="px-4 py-2 rounded-lg font-medium flex items-center transition-all duration-200"
-                            :class="activeTab.startsWith('news') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
-                            aria-expanded="false" aria-haspopup="true">
-                            Latest News <i class="fas fa-chevron-down ml-2 text-xs" aria-hidden="true"></i>
-                        </button>
-                        <div
-                            class="dropdown-menu absolute hidden bg-white text-red-800 rounded-lg shadow-xl mt-1 w-56 py-2 z-50"
-                            role="menu">
-                            <a href="#" @click="activeTab = 'news-results'"
-                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Results</a>
-                            <a href="#" @click="activeTab = 'news-fixtures'"
-                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Fixtures</a>
-                            <a href="#" @click="activeTab = 'news-table'"
-                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">League Table</a>
-                        </div>
-                    </div>
-
-                    <!-- Gallery Link -->
-                    <a href="#" @click="activeTab = 'gallery'"
-                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                        :class="activeTab === 'gallery' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Gallery</a>
-
-                    <a href="#" @click="activeTab = 'shop'"
-                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                        :class="activeTab === 'shop' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Shop</a>
-                </nav>
-
-                <!-- Desktop Cart & Mobile Menu -->
-                <div class="flex items-center space-x-4">
-                    <!-- Cart Icon - Desktop -->
-                    <div class="hidden lg:block relative">
-                        <button @click="showCart = true"
-                            class="relative p-2 rounded-lg transition-all duration-200 hover:bg-red-600"
-                            :class="cartItems.length > 0 ? 'text-accent' : 'text-red-100'"
-                            aria-label="Shopping cart">
-                            <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
-                            <!-- Cart Badge -->
-                            <div class="absolute -top-1 -right-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
-                                x-text="cartItems.length" aria-live="polite"></div>
-                        </button>
-                    </div>
-
-                    <!-- Mobile menu button -->
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-white p-2 relative" aria-label="Menu" aria-expanded="false" :aria-expanded="mobileMenuOpen">
-                        <i class="fas fa-bars text-xl" aria-hidden="true"></i>
-                        <!-- Mobile Cart Badge -->
-                        <div x-show="cartItems.length > 0"
-                            class="absolute -top-1 -right-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
-                            x-text="cartItems.length" aria-live="polite"></div>
-                    </button>
+                <div class="hidden md:block">
+                    <!-- Club name can go here if needed -->
                 </div>
             </div>
 
-            <!-- Mobile Navigation -->
-            <div x-show="mobileMenuOpen" class="lg:hidden mt-4 pb-2" x-cloak role="navigation" aria-label="Mobile navigation">
-                <div class="md:hidden mb-3">
-                    <p class="text-sm opacity-90">The Bees • National Super League</p>
-                </div>
-                
-                <a href="#" @click="activeTab = 'home'; mobileMenuOpen = false" class="block py-2 px-4 rounded-lg mb-1 mobile-text-base"
-                    :class="activeTab === 'home' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Home</a>
-                <a href="#" @click="activeTab = 'about'; mobileMenuOpen = false" class="block py-2 px-4 rounded-lg mb-1 mobile-text-base"
-                    :class="activeTab === 'about' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">About
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center space-x-1" aria-label="Main navigation">
+                <a href="#" @click="activeTab = 'home'"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                    :class="activeTab === 'home' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'"
+                    aria-current="page">Home</a>
+
+                <a href="#" @click="activeTab = 'about'"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                    :class="activeTab === 'about' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">About
                     Us</a>
 
-                <div class="mb-1">
-                    <button @click="teamMenuOpen = !teamMenuOpen"
-                        class="w-full text-left py-2 px-4 rounded-lg flex justify-between items-center mobile-text-base"
-                        :class="activeTab.startsWith('team') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
-                        aria-expanded="false" :aria-expanded="teamMenuOpen">
-                        <span>Team</span>
-                        <i class="fas fa-chevron-down text-xs" :class="{'rotate-180': teamMenuOpen}" aria-hidden="true"></i>
+                <!-- Team Dropdown -->
+                <div class="dropdown relative">
+                    <button class="px-4 py-2 rounded-lg font-medium flex items-center transition-all duration-200"
+                        :class="activeTab.startsWith('team') ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'"
+                        aria-expanded="false" aria-haspopup="true">
+                        Team <i class="fas fa-chevron-down ml-2 text-xs" aria-hidden="true"></i>
                     </button>
-                    <div x-show="teamMenuOpen" class="pl-6 mt-1" x-cloak role="menu">
-                        <a href="#" @click="activeTab = 'team-first'; mobileMenuOpen = false"
-                            class="block py-2 rounded-lg mb-1 mobile-text-base"
-                            :class="activeTab === 'team-first' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">First
-                            Team</a>
-                        <a href="#" @click="activeTab = 'team-youth'; mobileMenuOpen = false"
-                            class="block py-2 rounded-lg mb-1 mobile-text-base"
-                            :class="activeTab === 'team-youth' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Youth
-                            Team</a>
-                        <a href="#" @click="activeTab = 'team-women'; mobileMenuOpen = false"
-                            class="block py-2 rounded-lg mobile-text-base"
-                            :class="activeTab === 'team-women' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Women
-                            Team</a>
+                    <div
+                        class="dropdown-menu absolute hidden bg-white text-red-900 rounded-lg shadow-xl mt-1 w-48 py-2 z-50 border border-red-200"
+                        role="menu">
+                        <a href="#" @click="activeTab = 'team-first'"
+                            class="block px-4 py-2 hover:bg-red-100 transition-colors" role="menuitem">First Team</a>
+                        <a href="#" @click="activeTab = 'team-youth'"
+                            class="block px-4 py-2 hover:bg-red-100 transition-colors" role="menuitem">Youth Team</a>
+                        <a href="#" @click="activeTab = 'team-women'"
+                            class="block px-4 py-2 hover:bg-red-100 transition-colors" role="menuitem">Women Team</a>
                     </div>
                 </div>
 
-                <div class="mb-1">
-                    <button @click="newsMenuOpen = !newsMenuOpen"
-                        class="w-full text-left py-2 px-4 rounded-lg flex justify-between items-center mobile-text-base"
-                        :class="activeTab.startsWith('news') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
-                        aria-expanded="false" :aria-expanded="newsMenuOpen">
-                        <span>Latest News</span>
-                        <i class="fas fa-chevron-down text-xs" :class="{'rotate-180': newsMenuOpen}" aria-hidden="true"></i>
+                <!-- Latest News Dropdown -->
+                <div class="dropdown relative">
+                    <button class="px-4 py-2 rounded-lg font-medium flex items-center transition-all duration-200"
+                        :class="activeTab.startsWith('news') ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'"
+                        aria-expanded="false" aria-haspopup="true">
+                        Latest News <i class="fas fa-chevron-down ml-2 text-xs" aria-hidden="true"></i>
                     </button>
-                    <div x-show="newsMenuOpen" class="pl-6 mt-1" x-cloak role="menu">
-                        <a href="#" @click="activeTab = 'news-results'; mobileMenuOpen = false"
-                            class="block py-2 rounded-lg mb-1 mobile-text-base"
-                            :class="activeTab === 'news-results' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Results</a>
-                        <a href="#" @click="activeTab = 'news-fixtures'; mobileMenuOpen = false"
-                            class="block py-2 rounded-lg mb-1 mobile-text-base"
-                            :class="activeTab === 'news-fixtures' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Fixtures</a>
-                        <a href="#" @click="activeTab = 'news-table'; mobileMenuOpen = false"
-                            class="block py-2 rounded-lg mobile-text-base"
-                            :class="activeTab === 'news-table' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">League
-                            Table</a>
+                    <div
+                        class="dropdown-menu absolute hidden bg-white text-red-900 rounded-lg shadow-xl mt-1 w-56 py-2 z-50 border border-red-200"
+                        role="menu">
+                        <a href="#" @click="activeTab = 'news-results'"
+                            class="block px-4 py-2 hover:bg-red-100 transition-colors" role="menuitem">Results</a>
+                        <a href="#" @click="activeTab = 'news-fixtures'"
+                            class="block px-4 py-2 hover:bg-red-100 transition-colors" role="menuitem">Fixtures</a>
+                        <a href="#" @click="activeTab = 'news-table'"
+                            class="block px-4 py-2 hover:bg-red-100 transition-colors" role="menuitem">League Table</a>
                     </div>
                 </div>
 
-                <!-- Gallery Mobile Link -->
-                <a href="#" @click="activeTab = 'gallery'; mobileMenuOpen = false"
-                    class="block py-2 px-4 rounded-lg mb-1 mobile-text-base"
-                    :class="activeTab === 'gallery' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Gallery</a>
+                <!-- Gallery Link -->
+                <a href="#" @click="activeTab = 'gallery'"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                    :class="activeTab === 'gallery' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">Gallery</a>
 
-                <div class="flex items-center justify-between mb-1">
-                    <a href="#" @click="activeTab = 'shop'; mobileMenuOpen = false"
-                        class="block py-2 px-4 rounded-lg flex-1 mobile-text-base"
-                        :class="activeTab === 'shop' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Shop</a>
+                <a href="#" @click="activeTab = 'shop'"
+                    class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                    :class="activeTab === 'shop' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">Shop</a>
+            </nav>
 
-                    <!-- Mobile Cart Button -->
-                    <button @click="showCart = true; mobileMenuOpen = false"
-                        class="ml-2 p-2 rounded-lg transition-all duration-200 hover:bg-red-600 relative"
-                        :class="cartItems.length > 0 ? 'text-accent' : 'text-red-100'"
+            <!-- Desktop Cart & Mobile Menu -->
+            <div class="flex items-center space-x-4">
+                <!-- Cart Icon - Desktop -->
+                <div class="hidden lg:block relative">
+                    <button @click="showCart = true"
+                        class="relative p-2 rounded-lg transition-all duration-200 hover:bg-red-100 text-red-900"
                         aria-label="Shopping cart">
-                        <i class="fas fa-shopping-cart text-lg" aria-hidden="true"></i>
-                        <!-- Mobile Cart Badge -->
+                        <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
+                        <!-- Cart Badge -->
                         <div x-show="cartItems.length > 0"
-                            class="absolute -top-1 -right-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
+                            class="absolute -top-1 -right-1 bg-red-900 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
                             x-text="cartItems.length" aria-live="polite"></div>
                     </button>
                 </div>
+
+                <!-- Mobile menu button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-red-900 p-2 relative" aria-label="Menu" aria-expanded="false" :aria-expanded="mobileMenuOpen">
+                    <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                    <!-- Mobile Cart Badge -->
+                    <div x-show="cartItems.length > 0"
+                        class="absolute -top-1 -right-1 bg-red-900 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
+                        x-text="cartItems.length" aria-live="polite"></div>
+                </button>
             </div>
         </div>
-    </header>
+
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" class="lg:hidden mt-4 pb-2" x-cloak role="navigation" aria-label="Mobile navigation">
+            <div class="md:hidden mb-3">
+                <p class="text-sm text-red-900 opacity-90">The Bees • National Super League</p>
+            </div>
+            
+            <a href="#" @click="activeTab = 'home'; mobileMenuOpen = false" class="block py-2 px-4 rounded-lg mb-1 mobile-text-base transition-colors"
+                :class="activeTab === 'home' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">Home</a>
+            <a href="#" @click="activeTab = 'about'; mobileMenuOpen = false" class="block py-2 px-4 rounded-lg mb-1 mobile-text-base transition-colors"
+                :class="activeTab === 'about' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">About
+                Us</a>
+
+            <div class="mb-1">
+                <button @click="teamMenuOpen = !teamMenuOpen"
+                    class="w-full text-left py-2 px-4 rounded-lg flex justify-between items-center mobile-text-base transition-colors"
+                    :class="activeTab.startsWith('team') ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'"
+                    aria-expanded="false" :aria-expanded="teamMenuOpen">
+                    <span>Team</span>
+                    <i class="fas fa-chevron-down text-xs" :class="{'rotate-180': teamMenuOpen}" aria-hidden="true"></i>
+                </button>
+                <div x-show="teamMenuOpen" class="pl-6 mt-1" x-cloak role="menu">
+                    <a href="#" @click="activeTab = 'team-first'; mobileMenuOpen = false"
+                        class="block py-2 rounded-lg mb-1 mobile-text-base transition-colors text-red-900 hover:bg-red-100"
+                        :class="activeTab === 'team-first' ? 'font-bold bg-red-100' : ''">First
+                        Team</a>
+                    <a href="#" @click="activeTab = 'team-youth'; mobileMenuOpen = false"
+                        class="block py-2 rounded-lg mb-1 mobile-text-base transition-colors text-red-900 hover:bg-red-100"
+                        :class="activeTab === 'team-youth' ? 'font-bold bg-red-100' : ''">Youth
+                        Team</a>
+                    <a href="#" @click="activeTab = 'team-women'; mobileMenuOpen = false"
+                        class="block py-2 rounded-lg mobile-text-base transition-colors text-red-900 hover:bg-red-100"
+                        :class="activeTab === 'team-women' ? 'font-bold bg-red-100' : ''">Women
+                        Team</a>
+                </div>
+            </div>
+
+            <div class="mb-1">
+                <button @click="newsMenuOpen = !newsMenuOpen"
+                    class="w-full text-left py-2 px-4 rounded-lg flex justify-between items-center mobile-text-base transition-colors"
+                    :class="activeTab.startsWith('news') ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'"
+                    aria-expanded="false" :aria-expanded="newsMenuOpen">
+                    <span>Latest News</span>
+                    <i class="fas fa-chevron-down text-xs" :class="{'rotate-180': newsMenuOpen}" aria-hidden="true"></i>
+                </button>
+                <div x-show="newsMenuOpen" class="pl-6 mt-1" x-cloak role="menu">
+                    <a href="#" @click="activeTab = 'news-results'; mobileMenuOpen = false"
+                        class="block py-2 rounded-lg mb-1 mobile-text-base transition-colors text-red-900 hover:bg-red-100"
+                        :class="activeTab === 'news-results' ? 'font-bold bg-red-100' : ''">Results</a>
+                    <a href="#" @click="activeTab = 'news-fixtures'; mobileMenuOpen = false"
+                        class="block py-2 rounded-lg mb-1 mobile-text-base transition-colors text-red-900 hover:bg-red-100"
+                        :class="activeTab === 'news-fixtures' ? 'font-bold bg-red-100' : ''">Fixtures</a>
+                    <a href="#" @click="activeTab = 'news-table'; mobileMenuOpen = false"
+                        class="block py-2 rounded-lg mobile-text-base transition-colors text-red-900 hover:bg-red-100"
+                        :class="activeTab === 'news-table' ? 'font-bold bg-red-100' : ''">League
+                        Table</a>
+                </div>
+            </div>
+
+            <!-- Gallery Mobile Link -->
+            <a href="#" @click="activeTab = 'gallery'; mobileMenuOpen = false"
+                class="block py-2 px-4 rounded-lg mb-1 mobile-text-base transition-colors"
+                :class="activeTab === 'gallery' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">Gallery</a>
+
+            <div class="flex items-center justify-between mb-1">
+                <a href="#" @click="activeTab = 'shop'; mobileMenuOpen = false"
+                    class="block py-2 px-4 rounded-lg flex-1 mobile-text-base transition-colors"
+                    :class="activeTab === 'shop' ? 'bg-red-900 text-white' : 'text-red-900 hover:bg-red-100'">Shop</a>
+
+                <!-- Mobile Cart Button -->
+                <button @click="showCart = true; mobileMenuOpen = false"
+                    class="ml-2 p-2 rounded-lg transition-all duration-200 hover:bg-red-100 relative text-red-900"
+                    aria-label="Shopping cart">
+                    <i class="fas fa-shopping-cart text-lg" aria-hidden="true"></i>
+                    <!-- Mobile Cart Badge -->
+                    <div x-show="cartItems.length > 0"
+                        class="absolute -top-1 -right-1 bg-red-900 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
+                        x-text="cartItems.length" aria-live="polite"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
@@ -1772,25 +1771,24 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-accent text-white pt-12 pb-6">
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <!-- Club Info -->
                 <div>
-                    <img src="tmlogo/kabati.png" alt="Kabati Youth FC Logo" class="h-16 mb-4">
                     <h3 class="text-xl font-bold mb-4">Kabati Youth FC</h3>
                     <p class="text-gray-300 mb-4">The Bees - Proudly representing Murang'a in the National Super League.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="Facebook">
+                        <a href="#" class="text-white transition" aria-label="Facebook">
                             <i class="fab fa-facebook-f" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="Twitter">
+                        <a href="#" class="text-white transition" aria-label="Twitter">
                             <i class="fab fa-twitter" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="Instagram">
+                        <a href="#" class="text-white transition" aria-label="Instagram">
                             <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
-                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="YouTube">
+                        <a href="#" class="text-white transition" aria-label="YouTube">
                             <i class="fab fa-youtube" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -1800,18 +1798,18 @@
                 <div>
                     <h3 class="text-lg font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" @click="activeTab = 'home'" class="text-gray-300 hover:text-white transition">Home</a></li>
-                        <li><a href="#" @click="activeTab = 'about'" class="text-gray-300 hover:text-white transition">About Us</a></li>
-                        <li><a href="#" @click="activeTab = 'team-first'" class="text-gray-300 hover:text-white transition">First Team</a></li>
-                        <li><a href="#" @click="activeTab = 'news-fixtures'" class="text-gray-300 hover:text-white transition">Fixtures</a></li>
-                        <li><a href="#" @click="activeTab = 'shop'" class="text-gray-300 hover:text-white transition">Shop</a></li>
+                        <li><a href="#" @click="activeTab = 'home'" class="text-white transition">Home</a></li>
+                        <li><a href="#" @click="activeTab = 'about'" class="text-white transition">About Us</a></li>
+                        <li><a href="#" @click="activeTab = 'team-first'" class="text-white transition">First Team</a></li>
+                        <li><a href="#" @click="activeTab = 'news-fixtures'" class="text-white transition">Fixtures</a></li>
+                        <li><a href="#" @click="activeTab = 'shop'" class="text-white transition">Shop</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact Info -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">Contact Us</h3>
-                    <ul class="space-y-3 text-gray-300">
+                    <ul class="space-y-3 text-white">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary" aria-hidden="true"></i>
                             <span>Mukerenju Grounds, Murang'a, Kenya</span>
@@ -1830,20 +1828,20 @@
                 <!-- Newsletter -->
                 <div>
                     <h3 class="text-lg font-bold mb-4">Newsletter</h3>
-                    <p class="text-gray-300 mb-4">Subscribe to get updates on matches, tickets, and club news.</p>
+                    <p class="text-white mb-4">Subscribe to get updates on matches, tickets, and club news.</p>
                     <form class="space-y-3">
                         <input type="email" placeholder="Your email address" 
-                               class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                        <button type="submit" class="w-full bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition">
+                               class="w-full px-4 py-2 rounded-lg bg-white border text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <button type="submit" class="w-full bg-gray-700 hover:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition">
                             Subscribe
                         </button>
                     </form>
                 </div>
             </div>
 
-            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Kabati Youth FC. All rights reserved.</p>
-                <div class="flex space-x-6 text-sm text-gray-400">
+            <div class="border-t border-white pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-white text-sm mb-4 md:mb-0">&copy; 2025 Kabati Youth FC. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm text-white">
                     <a href="#" class="hover:text-white transition">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition">Terms of Service</a>
                     <a href="#" class="hover:text-white transition">Cookie Policy</a>
