@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> The Bees | Official NSL Club Website </title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Official website of Kabati Youth FC - The Bees. National Super League football club based in Murang'a, Kenya. Get latest news, fixtures, results, player profiles and merchandise.">
+    <meta name="keywords"
+        content="Kabati Youth, Kabati Youth FC, The Bees, National Super League, NSL, Kenyan football, Murang'a football, football Kenya, soccer Kenya, Mukerenju Grounds">
+    <meta name="author" content="Kabati Youth FC">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Kabati Youth FC | The Bees | Official NSL Club">
+    <meta property="og:description"
+        content="Official website of Kabati Youth FC - The Bees. National Super League football club based in Murang'a, Kenya. Get latest news, fixtures, results, and tickets.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kabatiyouthfc.com">
+    <meta property="og:image" content="https://kabatiyouthfc.com/logo.png">
+    <meta property="og:site_name" content="Kabati Youth FC">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kabati Youth FC | The Bees | Official NSL Club">
+    <meta name="twitter:description"
+        content="Official website of Kabati Youth FC - The Bees. National Super League football club based in Murang'a, Kenya">
+    <meta name="twitter:image" content="https://kabatiyouthfc.com/logo.png">
+    <meta name="twitter:site" content="@kabatiyouthfc">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="tmlogo/kabati.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kabatiyouthfc.com">
+
+    <!-- External Resources -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Updated color scheme - Red, White, Black for The Bees */
+        .bg-primary {
+            background-color: #dc2626;
+            /* Red */
+        }
+
+        .bg-secondary {
+            background-color: #ffffff;
+            /* White */
+        }
+
+        .bg-accent {
+            background-color: #000000;
+            /* Black */
+        }
+
+        .text-primary {
+            color: #dc2626;
+        }
+
+        .text-secondary {
+            color: #ffffff;
+        }
+
+        .text-accent {
+            color: #000000;
+        }
+
+        .border-primary {
+            border-color: #dc2626;
+        }
+
+        .border-secondary {
+            border-color: #ffffff;
+        }
+
+        .border-accent {
+            border-color: #000000;
+        }
+
+        /* Accessibility improvements */
+        .text-red-100 {
+            color: #fef2f2; /* Lighter red for better contrast */
+        }
+
+        .text-red-200 {
+            color: #fecaca; /* Even lighter for dark backgrounds */
+        }
+
+        .text-gray-600 {
+            color: #4b5563; /* Darker gray for better readability */
+        }
+
+        .text-sm {
+            font-size: 0.875rem; /* 14px base */
+        }
+
+        .text-xs {
+            font-size: 0.75rem; /* 12px base */
+        }
+
+        @media (max-width: 768px) {
+            .text-sm {
+                font-size: 0.875rem; /* Ensure minimum readable size */
+            }
+            
+            .text-xs {
+                font-size: 0.75rem; /* Ensure minimum readable size */
+            }
+            
+            /* Increase font sizes for better mobile readability */
+            .mobile-text-lg {
+                font-size: 1.125rem;
+            }
+            
+            .mobile-text-base {
+                font-size: 1rem;
+            }
+        }
+
+        /* Focus styles for better keyboard navigation */
+        button:focus,
+        a:focus {
+            outline: 2px solid #dc2626;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .bg-primary {
+                background-color: #b91c1c;
+            }
+            
+            .text-primary {
+                color: #b91c1c;
+            }
+            
+            .text-gray-600 {
+                color: #1f2937;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans" x-data="kabatiyouthApp()">
+    <!-- Header -->
+    <header class="bg-primary text-white sticky top-0 shadow-lg z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div>
+                        <a href="#home" aria-label="Kabati Youth FC Home"><img src="tmlogo/kabati.png" alt="Kabati Youth FC Logo" class="h-12 md:h-16"></a>
+                    </div>
+                    <div class="hidden md:block">
+     
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center space-x-1" aria-label="Main navigation">
+                    <a href="#" @click="activeTab = 'home'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                        :class="activeTab === 'home' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
+                        aria-current="page">Home</a>
+
+                    <a href="#" @click="activeTab = 'about'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                        :class="activeTab === 'about' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">About
+                        Us</a>
+
+                    <!-- Team Dropdown -->
+                    <div class="dropdown relative">
+                        <button class="px-4 py-2 rounded-lg font-medium flex items-center transition-all duration-200"
+                            :class="activeTab.startsWith('team') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
+                            aria-expanded="false" aria-haspopup="true">
+                            Team <i class="fas fa-chevron-down ml-2 text-xs" aria-hidden="true"></i>
+                        </button>
+                        <div
+                            class="dropdown-menu absolute hidden bg-white text-red-800 rounded-lg shadow-xl mt-1 w-48 py-2 z-50"
+                            role="menu">
+                            <a href="#" @click="activeTab = 'team-first'"
+                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">First Team</a>
+                            <a href="#" @click="activeTab = 'team-youth'"
+                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Youth Team</a>
+                            <a href="#" @click="activeTab = 'team-women'"
+                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Women Team</a>
+                        </div>
+                    </div>
+
+                    <!-- Latest News Dropdown -->
+                    <div class="dropdown relative">
+                        <button class="px-4 py-2 rounded-lg font-medium flex items-center transition-all duration-200"
+                            :class="activeTab.startsWith('news') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
+                            aria-expanded="false" aria-haspopup="true">
+                            Latest News <i class="fas fa-chevron-down ml-2 text-xs" aria-hidden="true"></i>
+                        </button>
+                        <div
+                            class="dropdown-menu absolute hidden bg-white text-red-800 rounded-lg shadow-xl mt-1 w-56 py-2 z-50"
+                            role="menu">
+                            <a href="#" @click="activeTab = 'news-results'"
+                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Results</a>
+                            <a href="#" @click="activeTab = 'news-fixtures'"
+                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">Fixtures</a>
+                            <a href="#" @click="activeTab = 'news-table'"
+                                class="block px-4 py-2 hover:bg-red-100" role="menuitem">League Table</a>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Link -->
+                    <a href="#" @click="activeTab = 'gallery'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                        :class="activeTab === 'gallery' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Gallery</a>
+
+                    <a href="#" @click="activeTab = 'shop'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200"
+                        :class="activeTab === 'shop' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Shop</a>
+                </nav>
+
+                <!-- Desktop Cart & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Cart Icon - Desktop -->
+                    <div class="hidden lg:block relative">
+                        <button @click="showCart = true"
+                            class="relative p-2 rounded-lg transition-all duration-200 hover:bg-red-600"
+                            :class="cartItems.length > 0 ? 'text-accent' : 'text-red-100'"
+                            aria-label="Shopping cart">
+                            <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
+                            <!-- Cart Badge -->
+                            <div class="absolute -top-1 -right-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
+                                x-text="cartItems.length" aria-live="polite"></div>
+                        </button>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-white p-2 relative" aria-label="Menu" aria-expanded="false" :aria-expanded="mobileMenuOpen">
+                        <i class="fas fa-bars text-xl" aria-hidden="true"></i>
+                        <!-- Mobile Cart Badge -->
+                        <div x-show="cartItems.length > 0"
+                            class="absolute -top-1 -right-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
+                            x-text="cartItems.length" aria-live="polite"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div x-show="mobileMenuOpen" class="lg:hidden mt-4 pb-2" x-cloak role="navigation" aria-label="Mobile navigation">
+                <div class="md:hidden mb-3">
+                    <p class="text-sm opacity-90">The Bees • National Super League</p>
+                </div>
+                
+                <a href="#" @click="activeTab = 'home'; mobileMenuOpen = false" class="block py-2 px-4 rounded-lg mb-1 mobile-text-base"
+                    :class="activeTab === 'home' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Home</a>
+                <a href="#" @click="activeTab = 'about'; mobileMenuOpen = false" class="block py-2 px-4 rounded-lg mb-1 mobile-text-base"
+                    :class="activeTab === 'about' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">About
+                    Us</a>
+
+                <div class="mb-1">
+                    <button @click="teamMenuOpen = !teamMenuOpen"
+                        class="w-full text-left py-2 px-4 rounded-lg flex justify-between items-center mobile-text-base"
+                        :class="activeTab.startsWith('team') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
+                        aria-expanded="false" :aria-expanded="teamMenuOpen">
+                        <span>Team</span>
+                        <i class="fas fa-chevron-down text-xs" :class="{'rotate-180': teamMenuOpen}" aria-hidden="true"></i>
+                    </button>
+                    <div x-show="teamMenuOpen" class="pl-6 mt-1" x-cloak role="menu">
+                        <a href="#" @click="activeTab = 'team-first'; mobileMenuOpen = false"
+                            class="block py-2 rounded-lg mb-1 mobile-text-base"
+                            :class="activeTab === 'team-first' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">First
+                            Team</a>
+                        <a href="#" @click="activeTab = 'team-youth'; mobileMenuOpen = false"
+                            class="block py-2 rounded-lg mb-1 mobile-text-base"
+                            :class="activeTab === 'team-youth' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Youth
+                            Team</a>
+                        <a href="#" @click="activeTab = 'team-women'; mobileMenuOpen = false"
+                            class="block py-2 rounded-lg mobile-text-base"
+                            :class="activeTab === 'team-women' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Women
+                            Team</a>
+                    </div>
+                </div>
+
+                <div class="mb-1">
+                    <button @click="newsMenuOpen = !newsMenuOpen"
+                        class="w-full text-left py-2 px-4 rounded-lg flex justify-between items-center mobile-text-base"
+                        :class="activeTab.startsWith('news') ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'"
+                        aria-expanded="false" :aria-expanded="newsMenuOpen">
+                        <span>Latest News</span>
+                        <i class="fas fa-chevron-down text-xs" :class="{'rotate-180': newsMenuOpen}" aria-hidden="true"></i>
+                    </button>
+                    <div x-show="newsMenuOpen" class="pl-6 mt-1" x-cloak role="menu">
+                        <a href="#" @click="activeTab = 'news-results'; mobileMenuOpen = false"
+                            class="block py-2 rounded-lg mb-1 mobile-text-base"
+                            :class="activeTab === 'news-results' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Results</a>
+                        <a href="#" @click="activeTab = 'news-fixtures'; mobileMenuOpen = false"
+                            class="block py-2 rounded-lg mb-1 mobile-text-base"
+                            :class="activeTab === 'news-fixtures' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">Fixtures</a>
+                        <a href="#" @click="activeTab = 'news-table'; mobileMenuOpen = false"
+                            class="block py-2 rounded-lg mobile-text-base"
+                            :class="activeTab === 'news-table' ? 'text-accent font-bold' : 'text-red-100 hover:text-accent'">League
+                            Table</a>
+                    </div>
+                </div>
+
+                <!-- Gallery Mobile Link -->
+                <a href="#" @click="activeTab = 'gallery'; mobileMenuOpen = false"
+                    class="block py-2 px-4 rounded-lg mb-1 mobile-text-base"
+                    :class="activeTab === 'gallery' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Gallery</a>
+
+                <div class="flex items-center justify-between mb-1">
+                    <a href="#" @click="activeTab = 'shop'; mobileMenuOpen = false"
+                        class="block py-2 px-4 rounded-lg flex-1 mobile-text-base"
+                        :class="activeTab === 'shop' ? 'bg-red-800 text-white' : 'text-red-100 hover:bg-red-600'">Shop</a>
+
+                    <!-- Mobile Cart Button -->
+                    <button @click="showCart = true; mobileMenuOpen = false"
+                        class="ml-2 p-2 rounded-lg transition-all duration-200 hover:bg-red-600 relative"
+                        :class="cartItems.length > 0 ? 'text-accent' : 'text-red-100'"
+                        aria-label="Shopping cart">
+                        <i class="fas fa-shopping-cart text-lg" aria-hidden="true"></i>
+                        <!-- Mobile Cart Badge -->
+                        <div x-show="cartItems.length > 0"
+                            class="absolute -top-1 -right-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold"
+                            x-text="cartItems.length" aria-live="polite"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Home Tab -->
+        <div x-show="activeTab === 'home'" x-cloak>
+            <!-- Hero Section -->
+            <section
+                class="min-h-screen bg-[url('squad/squad.jpg')] bg-cover bg-center bg-no-repeat flex items-center justify-start rounded-2xl p-6 md:p-8 mb-8 md:mb-12 shadow-lg relative"
+                aria-label="Hero section">
+                <!-- Dark Overlay -->
+                <div class="absolute inset-0 bg-black/30 rounded-2xl"></div>
+                <!-- Content -->
+                <div class="max-w-3xl text-white relative z-10">
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">Welcome to Kabati Youth FC</h1>
+                    <p class="text-lg md:text-xl mb-6 md:mb-8 text-white/90">The Bees - Proudly representing Murang'a in the National Super League. Experience the passion, witness the glory.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button @click="activeTab = 'news-fixtures'"
+                            class="bg-secondary hover:bg-gray-300 text-accent font-bold py-3 px-6 rounded-full shadow-lg transition hover:scale-105 text-sm md:text-base">
+                            Upcoming Fixtures
+                        </button>
+                        <button @click="activeTab = 'shop'"
+                            class="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold py-3 px-6 rounded-full transition text-sm md:text-base">
+                            Buy Tickets
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Next Match & Upcoming Fixtures -->
+            <section class="mb-12" aria-labelledby="upcoming-matches-heading">
+                <h2 id="upcoming-matches-heading" class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6 pb-2">Upcoming Matches
+                </h2>
+
+                <!-- Next Match Spotlight -->
+                <div class="bg-white rounded-xl shadow-lg p-4 md:p-6 mb-6 md:mb-8 border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="bg-primary text-white px-3 py-1 rounded-full text-xs md:text-sm font-medium">
+                            National Super League • Matchday 4
+                        </div>
+                        <div class="text-sm text-gray-500 font-medium">Next Match</div>
+                    </div>
+
+                    <!-- Teams & Match Info -->
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <!-- Home Team -->
+                        <div
+                            class="flex items-center space-x-3 md:space-x-4 mb-4 md:mb-0 flex-1 justify-end md:justify-start">
+                            <div class="text-right md:text-left">
+                                <h3 class="text-lg md:text-xl font-bold">Luanda Villa</h3>
+                                <p class="text-gray-600 text-sm">Home</p>
+                            </div>
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 overflow-hidden border-2 border-gray-300 shadow-md">
+                                <img src="tmlogo/luanda.png" alt="Luanda Villa Logo" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+
+                        <!-- Match Center -->
+                        <div class="text-center my-4 md:my-0 mx-4 md:mx-8">
+                            <div class="text-sm md:text-base text-gray-500 mb-1">Sat, Oct 19, 2025</div>
+                            <div class="text-xl md:text-2xl font-black text-gray-800 mb-1">12:00 EAT</div>
+                            <div class="bg-gray-100 rounded-lg px-4 py-2 border border-gray-300">
+                                <div class="text-lg md:text-xl font-bold text-gray-800">VS</div>
+                            </div>
+                            <div class="text-xs md:text-sm text-gray-600 mt-1 flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-primary mr-1" aria-hidden="true"></i>
+                                Luanda Villa Ground
+                            </div>
+                        </div>
+
+                        <!-- Away Team -->
+                        <div class="flex items-center space-x-3 md:space-x-4 flex-1">
+                            <div
+                                class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-gray-100 overflow-hidden border-2 border-primary shadow-md">
+                                <img src="tmlogo/kabati.png" alt="Kabati Youth FC Logo" class="w-full h-full object-cover">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-lg md:text-xl font-bold">Kabati Youth</h3>
+                                <p class="text-gray-600 text-sm">Away</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Match Actions -->
+                    <div
+                        class="mt-6 pt-4 border-t border-gray-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="flex items-center text-gray-700 text-sm md:text-base">
+                            <i class="fas fa-map-marker-alt text-primary mr-2" aria-hidden="true"></i>
+                            <span class="font-medium">Luanda Villa Ground, Luanda</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button @click="activeTab = 'shop'"
+                                class="bg-primary hover:bg-red-700 text-white font-bold py-2 px-4 md:px-6 rounded-full transition text-sm md:text-base shadow-md">
+                                Buy Tickets
+                            </button>
+                            <button
+                                class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-3 md:px-4 rounded-full transition text-sm border border-gray-300">
+                                <i class="far fa-bell mr-1" aria-hidden="true"></i> Remind
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Button -->
+                <div class="text-center mt-6">
+                    <button @click="activeTab = 'news-fixtures'"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-6 rounded-full transition text-sm border border-gray-300">
+                        View All Fixtures <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Latest Results & News -->
+            <section class="mb-12" aria-labelledby="latest-results-news-heading">
+                <h2 id="latest-results-news-heading" class="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6 pb-2">Latest Results &
+                    News</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                    <!-- Latest Results -->
+                    <div class="bg-white rounded-xl shadow-lg p-4 md:p-6 border border-gray-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg md:text-xl font-bold text-gray-800">Recent Matches</h3>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Last 3</span>
+                        </div>
+
+                        <div class="space-y-3 md:space-y-4">
+                            <template x-for="result in recentResults" :key="result.id">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                                    @click="activeTab = 'news-results'">
+                                    <!-- Home Team -->
+                                    <div class="flex items-center space-x-2 md:space-x-3 flex-1">
+                                        <div
+                                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 overflow-hidden border border-gray-300">
+                                            <img :src="result.homeTeam.logo" :alt="result.homeTeam.name + ' Logo'"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <span class="font-medium text-sm md:text-base"
+                                            x-text="result.homeTeam.name"></span>
+                                    </div>
+
+                                    <!-- Score -->
+                                    <div class="mx-2 md:mx-4">
+                                        <div class="font-bold px-2 md:px-3 py-1 rounded text-sm md:text-base"
+                                            :class="result.homeTeam.name === 'Kabati Youth' ? 
+                                                    (result.homeScore > result.awayScore ? 'bg-green-100 text-green-800' : 
+                                                     result.homeScore < result.awayScore ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800') :
+                                                    (result.awayScore > result.homeScore ? 'bg-green-100 text-green-800' : 
+                                                     result.awayScore < result.homeScore ? 'bg-red-100 text-red-800' : 'bg-yellow-100 text-yellow-800')"
+                                            x-text="result.homeScore + ' - ' + result.awayScore"></div>
+                                        <div class="text-xs text-gray-500 text-center mt-1" x-text="result.homeTeam.name === 'Kabati Youth' ? 
+                                                    (result.homeScore > result.awayScore ? 'W' : 
+                                                     result.homeScore < result.awayScore ? 'L' : 'D') :
+                                                    (result.awayScore > result.homeScore ? 'W' : 
+                                                     result.awayScore < result.homeScore ? 'L' : 'D')"></div>
+                                    </div>
+
+                                    <!-- Away Team -->
+                                    <div class="flex items-center space-x-2 md:space-x-3 flex-1 justify-end">
+                                        <span class="font-medium text-sm md:text-base text-right"
+                                            x-text="result.awayTeam.name"></span>
+                                        <div
+                                            class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 overflow-hidden border border-gray-300">
+                                            <img :src="result.awayTeam.logo" :alt="result.awayTeam.name + ' Logo'"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <button @click="activeTab = 'news-results'"
+                            class="w-full mt-4 md:mt-6 text-primary hover:text-red-800 font-medium flex items-center justify-center text-sm md:text-base py-2">
+                            View All Results <i class="fas fa-arrow-right ml-2 text-xs md:text-sm" aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+                    <!-- Latest News -->
+                    <div class="bg-white rounded-xl shadow-lg p-4 md:p-6 border border-gray-100">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-lg md:text-xl font-bold text-gray-800">Club News</h3>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Latest</span>
+                        </div>
+
+                        <div class="space-y-4 md:space-y-4">
+                            <template x-for="news in clubNews" :key="news.id">
+                                <a href="#"
+                                    class="block border-l-4 pl-3 md:pl-4 py-2 hover:bg-gray-50 rounded-r-lg transition-colors group"
+                                    :class="news.category === 'Promotion' ? 'border-primary' : 
+                                          news.category === 'Academy' ? 'border-accent' : 
+                                          news.category === 'Facilities' ? 'border-accent' : 'border-primary'">
+                                    <div class="flex justify-between items-start">
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-red-700 transition-colors"
+                                                x-text="news.title"></h4>
+                                            <p class="text-gray-600 text-xs md:text-sm mt-1 line-clamp-2"
+                                                x-text="news.excerpt"></p>
+                                        </div>
+                                        <div class="w-16 h-16 md:w-20 md:h-20 rounded-lg ml-3 flex items-center justify-center text-white"
+                                            :class="news.category === 'Promotion' ? 'bg-gradient-to-br from-red-400 to-black' : 
+                                                    news.category === 'Academy' ? 'bg-gradient-to-br from-black to-red-300' : 
+                                                    news.category === 'Facilities' ? 'bg-gradient-to-br from-red-400 to-black' : 'bg-gradient-to-br from-red-400 to-black'">
+                                            <i :class="news.icon + ' text-lg'" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center mt-2 text-gray-500 text-xs">
+                                        <i class="far fa-clock mr-1" aria-hidden="true"></i>
+                                        <span x-text="news.date"></span>
+                                        <span class="mx-2">•</span>
+                                        <span x-text="news.category"></span>
+                                    </div>
+                                </a>
+                            </template>
+                        </div>
+
+                        <button
+                            class="w-full mt-4 md:mt-6 text-primary hover:text-red-800 font-medium flex items-center justify-center text-sm md:text-base py-2">
+                            More News <i class="fas fa-arrow-right ml-2 text-xs md:text-sm" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- League Table Snapshot -->
+            <section class="mb-12" aria-labelledby="league-standings-heading">
+                <h2 id="league-standings-heading" class="text-3xl font-bold text-gray-800 mb-6 pb-2">League Standings</h2>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- Desktop Table -->
+                    <div class="hidden md:block">
+                        <table class="w-full">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th class="py-3 px-4 text-left text-sm">Pos</th>
+                                    <th class="py-3 px-4 text-left text-sm">Club</th>
+                                    <th class="py-3 px-4 text-center text-sm">P</th>
+                                    <th class="py-3 px-4 text-center text-sm">W</th>
+                                    <th class="py-3 px-4 text-center text-sm">D</th>
+                                    <th class="py-3 px-4 text-center text-sm">L</th>
+                                    <th class="py-3 px-4 text-center text-sm">GF</th>
+                                    <th class="py-3 px-4 text-center text-sm">GA</th>
+                                    <th class="py-3 px-4 text-center text-sm">GD</th>
+                                    <th class="py-3 px-4 text-center text-sm">Pts</th>
+                                    <th class="py-3 px-4 text-center text-sm">Form</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="team in leagueTable.slice(0, 8)" :key="team.id">
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                                        :class="team.id === 15 ? 'bg-red-50 font-semibold' : ''">
+                                        <td class="py-3 px-4">
+                                            <div class="flex items-center">
+                                                <span class="font-medium" x-text="team.position"></span>
+                                                <div class="ml-2">
+                                                    <template x-if="team.positionChange > 0">
+                                                        <i class="fas fa-chevron-up text-green-500 text-xs" aria-hidden="true"></i>
+                                                    </template>
+                                                    <template x-if="team.positionChange < 0">
+                                                        <i class="fas fa-chevron-down text-red-500 text-xs" aria-hidden="true"></i>
+                                                    </template>
+                                                    <template x-if="team.positionChange === 0">
+                                                        <i class="fas fa-minus text-gray-400 text-xs" aria-hidden="true"></i>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <div class="flex items-center">
+                                                <div
+                                                    class="w-8 h-8 rounded-full mr-3 flex-shrink-0 bg-gray-200 overflow-hidden">
+                                                    <img :src="team.logo" :alt="team.name"
+                                                        class="w-full h-full object-cover">
+                                                </div>
+                                                <span class="font-medium" x-text="team.name"></span>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center" x-text="team.played"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.won"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.drawn"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.lost"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.goalsFor"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.goalsAgainst"></td>
+                                        <td class="py-3 px-4 text-center font-medium"
+                                            :class="team.goalDifference > 0 ? 'text-green-600' : team.goalDifference < 0 ? 'text-red-600' : 'text-gray-600'"
+                                            x-text="team.goalDifference > 0 ? '+' + team.goalDifference : team.goalDifference">
+                                        </td>
+                                        <td class="py-3 px-4 text-center font-bold" x-text="team.points"></td>
+                                        <td class="py-3 px-4">
+                                            <div class="flex justify-center space-x-1">
+                                                <template x-for="result in team.form" :key="result.id">
+                                                    <div class="w-5 h-5 rounded-full text-xs flex items-center justify-center text-white"
+                                                        :class="result === 'W' ? 'bg-green-500' : 
+                                                              result === 'D' ? 'bg-yellow-500' : 'bg-red-500'">
+                                                        <span x-text="result"></span>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile Table -->
+                    <div class="md:hidden">
+                        <div class="divide-y divide-gray-200">
+                            <template x-for="team in leagueTable.slice(0, 6)" :key="team.id">
+                                <div class="p-4 hover:bg-gray-50 transition-colors"
+                                    :class="team.id === 15 ? 'bg-red-50 font-semibold' : ''">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center">
+                                            <span class="font-bold mr-2" x-text="team.position"></span>
+                                            <div class="w-8 h-8 rounded-full mr-2 bg-gray-200 overflow-hidden">
+                                                <img :src="team.logo" :alt="team.name"
+                                                    class="w-full h-full object-cover">
+                                            </div>
+                                            <span class="font-medium" x-text="team.name"></span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="font-bold mr-2" x-text="team.points"></span>
+                                            <span class="text-xs text-gray-500">PTS</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between text-sm text-gray-600">
+                                        <div class="flex space-x-3">
+                                            <span>P: <span x-text="team.played"></span></span>
+                                            <span>W: <span x-text="team.won"></span></span>
+                                            <span>D: <span x-text="team.drawn"></span></span>
+                                            <span>L: <span x-text="team.lost"></span></span>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <template x-for="result in team.form.slice(0, 5)" :key="result.id">
+                                                <div class="w-4 h-4 rounded-full text-xs flex items-center justify-center text-white"
+                                                    :class="result === 'W' ? 'bg-green-500' : 
+                                                          result === 'D' ? 'bg-yellow-500' : 'bg-red-500'">
+                                                    <span x-text="result"></span>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- View Full Table Button -->
+                    <div class="p-4 border-t border-gray-200 text-center">
+                        <button @click="activeTab = 'news-table'"
+                            class="bg-primary hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition text-sm shadow-md">
+                            View Full Table
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Club Shop Preview -->
+            <section class="mb-12" aria-labelledby="club-shop-heading">
+                <h2 id="club-shop-heading" class="text-3xl font-bold text-gray-800 mb-6 pb-2">Club Shop</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <template x-for="product in featuredProducts" :key="product.id">
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+                            <div class="relative overflow-hidden">
+                                <img :src="product.image" :alt="product.name"
+                                    class="w-full h-48 md:h-56 object-cover group-hover:scale-105 transition-transform duration-300">
+                                <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    <span x-text="product.category"></span>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-800 mb-2 text-sm md:text-base" x-text="product.name"></h3>
+                                <div class="flex justify-between items-center">
+                                    <div class="text-primary font-bold text-lg" x-text="'KSh ' + product.price"></div>
+                                    <button @click="addToCart(product)"
+                                        class="bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-full transition text-sm flex items-center">
+                                        <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
+                                        <span>Add</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="text-center mt-8">
+                    <button @click="activeTab = 'shop'"
+                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-8 rounded-full transition text-sm border border-gray-300">
+                        View All Products <i class="fas fa-arrow-right ml-2" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Us Tab -->
+        <div x-show="activeTab === 'about'" x-cloak>
+            <!-- About Hero Section -->
+            <section class="mb-12" aria-labelledby="about-hero-heading">
+                <div
+                    class="bg-gradient-to-r from-primary to-red-800 rounded-2xl p-8 md:p-12 text-white shadow-lg relative overflow-hidden">
+                    <!-- Background Pattern -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Ccircle cx=\"30\" cy=\"30\" r=\"4\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');">
+                        </div>
+                    </div>
+                    <div class="relative z-10">
+                        <h1 id="about-hero-heading" class="text-3xl md:text-5xl text-gray-800 mb-4">About Kabati Youth FC</h1>
+                        <p class="text-lg md:text-xl mb-6 max-w-3xl text-gray-600">Founded with passion, built with community, and driven by ambition. The Bees are buzzing with talent and determination.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                <div class="text-2xl font-bold text-red-800" x-text="new Date().getFullYear() - 2016"></div>
+                                <div class="text-sm opacity-90 text-gray-800">Years of Excellence</div>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                <div class="text-2xl font-bold text-red-800">3</div>
+                                <div class="text-sm opacity-90 text-gray-800">Youth Teams</div>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2">
+                                <div class="text-2xl font-bold text-red-800">100+</div>
+                                <div class="text-sm opacity-90 text-gray-800">Players Developed</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Club History -->
+            <section class="mb-12" aria-labelledby="club-history-heading">
+                <h2 id="club-history-heading" class="text-3xl font-bold text-gray-800 mb-6">Our History</h2>
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">From Humble Beginnings to National Stage</h3>
+                            <p class="text-gray-600 mb-4">Kabati Youth FC was established in 2016 with a vision to nurture local talent and provide a platform for young footballers in Murang'a County to showcase their skills.</p>
+                            <p class="text-gray-600 mb-4">Starting from grassroots football, the club quickly rose through the ranks, earning promotion to the National Super League through determination, skill, and community support.</p>
+                            <p class="text-gray-600 mb-6">Today, we continue to build on our legacy, developing not just footballers but responsible citizens who contribute positively to society.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <div class="bg-red-100 text-red-800 px-4 py-2 rounded-lg">
+                                    <div class="font-bold">2016</div>
+                                    <div class="text-sm">Club Founded</div>
+                                </div>
+                                <div class="bg-red-100 text-red-800 px-4 py-2 rounded-lg">
+                                    <div class="font-bold">2019</div>
+                                    <div class="text-sm">County Champions</div>
+                                </div>
+                                <div class="bg-red-100 text-red-800 px-4 py-2 rounded-lg">
+                                    <div class="font-bold">2022</div>
+                                    <div class="text-sm">NSL Promotion</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl p-4">
+                            <img src="tmlogo/squad.jpg" alt="Kabati Youth FC Team Photo" class="w-full h-auto rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vision & Mission -->
+            <section class="mb-12" aria-labelledby="vision-mission-heading">
+                <h2 id="vision-mission-heading" class="text-3xl font-bold text-gray-800 mb-6">Vision & Mission</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-eye text-white text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Our Vision</h3>
+                        <p class="text-gray-600">To become a leading football academy and professional club in Kenya, recognized for developing world-class talent and promoting sports excellence within our community.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
+                            <i class="fas fa-bullseye text-white text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Our Mission</h3>
+                        <p class="text-gray-600">To identify, nurture, and develop young football talent through professional coaching, education, and character building, creating opportunities for success both on and off the pitch.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Values -->
+            <section class="mb-12" aria-labelledby="core-values-heading">
+                <h2 id="core-values-heading" class="text-3xl font-bold text-gray-800 mb-6">Our Core Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-primary text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Community</h3>
+                        <p class="text-gray-600 text-sm">We are rooted in our community and committed to its growth and development.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-medal text-primary text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Excellence</h3>
+                        <p class="text-gray-600 text-sm">We strive for the highest standards in everything we do, both on and off the pitch.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-handshake text-primary text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Integrity</h3>
+                        <p class="text-gray-600 text-sm">We conduct ourselves with honesty, fairness, and respect for all.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                        <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-seedling text-primary text-2xl" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Development</h3>
+                        <p class="text-gray-600 text-sm">We are committed to the holistic growth of our players as athletes and individuals.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Management Team -->
+            <section class="mb-12" aria-labelledby="management-team-heading">
+                <h2 id="management-team-heading" class="text-3xl font-bold text-gray-800 mb-6">Management Team</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-primary to-red-800 flex items-center justify-center">
+                            <i class="fas fa-user-tie text-white text-6xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-1">John Mwangi</h3>
+                            <p class="text-primary font-medium mb-4">Club Chairman</p>
+                            <p class="text-gray-600 text-sm">Leading the club with vision and dedication since its inception in 2016.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-primary to-red-800 flex items-center justify-center">
+                            <i class="fas fa-whistle text-white text-6xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-1">James Kariuki</h3>
+                            <p class="text-primary font-medium mb-4">Head Coach</p>
+                            <p class="text-gray-600 text-sm">Former professional footballer with over 10 years of coaching experience.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-48 bg-gradient-to-br from-primary to-red-800 flex items-center justify-center">
+                            <i class="fas fa-user-md text-white text-6xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-1">Dr. Sarah Wambui</h3>
+                            <p class="text-primary font-medium mb-4">Team Doctor</p>
+                            <p class="text-gray-600 text-sm">Ensuring our players stay healthy and perform at their best.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Academy Structure -->
+            <section class="mb-12" aria-labelledby="academy-structure-heading">
+                <h2 id="academy-structure-heading" class="text-3xl font-bold text-gray-800 mb-6">Academy Structure</h2>
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="text-center p-6 border-2 border-red-200 rounded-xl">
+                            <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-futbol text-primary text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">First Team</h3>
+                            <p class="text-gray-600 mb-4">Our senior squad competing in the National Super League.</p>
+                            <div class="text-primary font-bold">Ages 18+</div>
+                        </div>
+                        <div class="text-center p-6 border-2 border-red-200 rounded-xl">
+                            <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-users text-primary text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Youth Team</h3>
+                            <p class="text-gray-600 mb-4">Developing the next generation of football stars.</p>
+                            <div class="text-primary font-bold">Ages 15-17</div>
+                        </div>
+                        <div class="text-center p-6 border-2 border-red-200 rounded-xl">
+                            <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-child text-primary text-3xl" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-2">Junior Team</h3>
+                            <p class="text-gray-600 mb-4">Building fundamental skills and passion for the game.</p>
+                            <div class="text-primary font-bold">Ages 12-14</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Facilities -->
+            <section class="mb-12" aria-labelledby="facilities-heading">
+                <h2 id="facilities-heading" class="text-3xl font-bold text-gray-800 mb-6">Our Facilities</h2>
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Mukerenju Grounds</h3>
+                            <p class="text-gray-600 mb-4">Our home ground, Mukerenju Grounds, is where The Bees train and host home matches. Located in the heart of Murang'a, it's a facility we're continuously improving to meet professional standards.</p>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-3" aria-hidden="true"></i>
+                                    <span class="text-gray-700">Professional-grade football pitch</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-3" aria-hidden="true"></i>
+                                    <span class="text-gray-700">Modern changing rooms</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-3" aria-hidden="true"></i>
+                                    <span class="text-gray-700">Training equipment</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-check text-primary mr-3" aria-hidden="true"></i>
+                                    <span class="text-gray-700">Spectator stands</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-xl p-4">
+                            <img src="tmlogo/ground.jpg" alt="Mukerenju Grounds - Home of Kabati Youth FC" class="w-full h-auto rounded-lg shadow-md">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Community Engagement -->
+            <section class="mb-12" aria-labelledby="community-engagement-heading">
+                <h2 id="community-engagement-heading" class="text-3xl font-bold text-gray-800 mb-6">Community Engagement</h2>
+                <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Giving Back</h3>
+                            <p class="text-gray-600 mb-4">Kabati Youth FC is more than just a football club; we're an integral part of the Murang'a community. Our players and staff regularly participate in community initiatives, including:</p>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-primary mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Football clinics for local schools</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-primary mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Environmental clean-up campaigns</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-primary mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Charity matches for local causes</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-heart text-primary mr-2 mt-1" aria-hidden="true"></i>
+                                    <span>Mentorship programs for youth</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-red-50 rounded-xl p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Join Our Community</h3>
+                            <p class="text-gray-600 mb-4">Become part of The Bees family! Follow us on social media, attend our matches, and support local talent.</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-primary hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
+                                <a href="#" class="bg-primary hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                                <a href="#" class="bg-primary hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                    <span class="sr-only">Instagram</span>
+                                </a>
+                                <a href="#" class="bg-primary hover:bg-red-700 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                                    <span class="sr-only">YouTube</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Team Tabs -->
+        <div x-show="activeTab.startsWith('team')" x-cloak>
+            <!-- Team Header -->
+            <div class="mb-8" aria-labelledby="team-header-heading">
+                <div class="bg-gradient-to-r from-primary to-red-800 rounded-2xl p-6 md:p-8 text-white shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div>
+                            <h1 id="team-header-heading" class="text-2xl md:text-4xl font-black mb-2" x-text="getTeamTitle()"></h1>
+                            <p class="text-lg opacity-90" x-text="getTeamSubtitle()"></p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                                <div class="text-2xl font-bold" x-text="getTeamStats().players"></div>
+                                <div class="text-sm opacity-90">Players</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Navigation -->
+            <div class="mb-8" role="navigation" aria-label="Team navigation">
+                <div class="flex flex-wrap gap-2">
+                    <button @click="activeTab = 'team-first'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeTab === 'team-first' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        First Team
+                    </button>
+                    <button @click="activeTab = 'team-youth'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeTab === 'team-youth' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        Youth Team
+                    </button>
+                    <button @click="activeTab = 'team-women'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeTab === 'team-women' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        Women Team
+                    </button>
+                </div>
+            </div>
+
+            <!-- Team Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Squad List -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Squad</h2>
+                        
+                        <!-- Position Filters -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <template x-for="position in getTeamPositions()" :key="position">
+                                <button @click="activePosition = activePosition === position ? '' : position"
+                                    class="px-3 py-1 rounded-full text-sm transition-all duration-200"
+                                    :class="activePosition === position ? 
+                                           'bg-primary text-white' : 
+                                           'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+                                    x-text="position"></button>
+                            </template>
+                        </div>
+
+                        <!-- Players Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <template x-for="player in getFilteredPlayers()" :key="player.id">
+                                <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="w-16 h-16 rounded-full bg-gray-200 overflow-hidden flex items-center justify-center">
+                                            <i class="fas fa-user text-gray-400 text-xl" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <h3 class="font-bold text-gray-800" x-text="player.name"></h3>
+                                            <div class="flex items-center text-sm text-gray-600 mb-1">
+                                                <span x-text="player.position"></span>
+                                                <span class="mx-2">•</span>
+                                                <span x-text="player.number ? '#' + player.number : ''"></span>
+                                            </div>
+                                            <div class="text-xs text-gray-500" x-text="player.nationality"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div x-show="getFilteredPlayers().length === 0" class="text-center py-8">
+                            <i class="fas fa-search text-gray-300 text-4xl mb-4" aria-hidden="true"></i>
+                            <p class="text-gray-500">No players found for the selected position.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Stats & Info -->
+                <div class="space-y-6">
+                    <!-- Coaching Staff -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Coaching Staff</h2>
+                        <div class="space-y-4">
+                            <template x-for="staff in getTeamStaff()" :key="staff.id">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center">
+                                        <i class="fas fa-user text-gray-400" aria-hidden="true"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800" x-text="staff.name"></h3>
+                                        <p class="text-sm text-gray-600" x-text="staff.role"></p>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Team Stats -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Team Stats</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center p-3 bg-red-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary" x-text="getTeamStats().matches"></div>
+                                <div class="text-sm text-gray-600">Matches</div>
+                            </div>
+                            <div class="text-center p-3 bg-red-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary" x-text="getTeamStats().wins"></div>
+                                <div class="text-sm text-gray-600">Wins</div>
+                            </div>
+                            <div class="text-center p-3 bg-red-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary" x-text="getTeamStats().goals"></div>
+                                <div class="text-sm text-gray-600">Goals</div>
+                            </div>
+                            <div class="text-center p-3 bg-red-50 rounded-lg">
+                                <div class="text-2xl font-bold text-primary" x-text="getTeamStats().cleanSheets"></div>
+                                <div class="text-sm text-gray-600">Clean Sheets</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Matches -->
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Upcoming Matches</h2>
+                        <div class="space-y-3">
+                            <template x-for="match in getTeamMatches()" :key="match.id">
+                                <div class="border border-gray-200 rounded-lg p-3">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="text-sm font-medium text-gray-700" x-text="match.competition"></div>
+                                        <div class="text-xs text-gray-500" x-text="match.date"></div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-6 h-6 rounded-full bg-gray-200"></div>
+                                            <span class="text-sm font-medium" x-text="match.opponent"></span>
+                                        </div>
+                                        <div class="text-xs px-2 py-1 rounded" 
+                                             :class="match.venue === 'Home' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'"
+                                             x-text="match.venue"></div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News Tabs -->
+        <div x-show="activeTab.startsWith('news')" x-cloak>
+            <!-- News Header -->
+            <div class="mb-8" aria-labelledby="news-header-heading">
+                <div class="bg-gradient-to-r from-primary to-red-800 rounded-2xl p-6 md:p-8 text-gray-900 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div>
+                            <h1 id="news-header-heading" class="text-2xl md:text-4xl font-black mb-2" x-text="getNewsTitle()"></h1>
+                            <p class="text-lg opacity-90" x-text="getNewsSubtitle()"></p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                                <div class="text-2xl font-bold" x-text="getNewsStats().articles"></div>
+                                <div class="text-sm opacity-90">Articles</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Navigation -->
+            <div class="mb-8" role="navigation" aria-label="News navigation">
+                <div class="flex flex-wrap gap-2">
+                    <button @click="activeTab = 'news-results'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeTab === 'news-results' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        Match Results
+                    </button>
+                    <button @click="activeTab = 'news-fixtures'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeTab === 'news-fixtures' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        Upcoming Fixtures
+                    </button>
+                    <button @click="activeTab = 'news-table'"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeTab === 'news-table' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        League Table
+                    </button>
+                </div>
+            </div>
+
+            <!-- News Content -->
+            <div x-show="activeTab === 'news-results'" x-cloak>
+                <!-- Match Results -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Recent Match Results</h2>
+                    
+                    <div class="space-y-6">
+                        <template x-for="result in matchResults" :key="result.id">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="text-sm text-gray-500" x-text="result.date"></div>
+                                    <div class="text-sm font-medium px-2 py-1 rounded"
+                                         :class="result.result === 'W' ? 'bg-green-100 text-green-800' : 
+                                                result.result === 'D' ? 'bg-yellow-100 text-yellow-800' : 
+                                                'bg-red-100 text-red-800'"
+                                         x-text="result.result === 'W' ? 'Win' : result.result === 'D' ? 'Draw' : 'Loss'"></div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <!-- Home Team -->
+                                    <div class="flex items-center space-x-3 flex-1">
+                                        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                                            <img :src="result.homeTeam.logo" :alt="result.homeTeam.name + ' Logo'" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold" x-text="result.homeTeam.name"></h3>
+                                            <p class="text-sm text-gray-600">Home</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Score -->
+                                    <div class="mx-4 text-center">
+                                        <div class="text-2xl font-bold" x-text="result.homeScore + ' - ' + result.awayScore"></div>
+                                        <div class="text-xs text-gray-500 mt-1" x-text="result.competition"></div>
+                                    </div>
+                                    
+                                    <!-- Away Team -->
+                                    <div class="flex items-center space-x-3 flex-1 justify-end">
+                                        <div class="text-right">
+                                            <h3 class="font-bold" x-text="result.awayTeam.name"></h3>
+                                            <p class="text-sm text-gray-600">Away</p>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                                            <img :src="result.awayTeam.logo" :alt="result.awayTeam.name + ' Logo'" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Match Details -->
+                                <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between text-sm text-gray-600">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
+                                        <span x-text="result.venue"></span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="far fa-clock mr-2" aria-hidden="true"></i>
+                                        <span x-text="result.time"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="activeTab === 'news-fixtures'" x-cloak>
+                <!-- Upcoming Fixtures -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Upcoming Fixtures</h2>
+                    
+                    <div class="space-y-6">
+                        <template x-for="fixture in upcomingFixtures" :key="fixture.id">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div class="text-sm text-gray-500" x-text="fixture.date"></div>
+                                    <div class="text-sm font-medium px-2 py-1 rounded bg-blue-100 text-blue-800"
+                                         x-text="fixture.competition"></div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <!-- Home Team -->
+                                    <div class="flex items-center space-x-3 flex-1">
+                                        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                                            <img :src="fixture.homeTeam.logo" :alt="fixture.homeTeam.name + ' Logo'" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold" x-text="fixture.homeTeam.name"></h3>
+                                            <p class="text-sm text-gray-600">Home</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- VS -->
+                                    <div class="mx-4 text-center">
+                                        <div class="text-xl font-bold text-gray-500">VS</div>
+                                        <div class="text-lg font-bold mt-1" x-text="fixture.time"></div>
+                                        <div class="text-xs text-gray-500 mt-1" x-text="fixture.round"></div>
+                                    </div>
+                                    
+                                    <!-- Away Team -->
+                                    <div class="flex items-center space-x-3 flex-1 justify-end">
+                                        <div class="text-right">
+                                            <h3 class="font-bold" x-text="fixture.awayTeam.name"></h3>
+                                            <p class="text-sm text-gray-600">Away</p>
+                                        </div>
+                                        <div class="w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+                                            <img :src="fixture.awayTeam.logo" :alt="fixture.awayTeam.name + ' Logo'" class="w-full h-full object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Match Actions -->
+                                <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between items-center">
+                                    <div class="flex items-center text-sm text-gray-600">
+                                        <i class="fas fa-map-marker-alt mr-2" aria-hidden="true"></i>
+                                        <span x-text="fixture.venue"></span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <button class="bg-primary hover:bg-red-700 text-white text-sm font-medium py-2 px-4 rounded-full transition">
+                                            Buy Tickets
+                                        </button>
+                                        <button class="bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium py-2 px-3 rounded-full transition border border-gray-300">
+                                            <i class="far fa-bell" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+
+            <div x-show="activeTab === 'news-table'" x-cloak>
+                <!-- League Table -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8">
+                    <div class="p-6 border-b border-gray-200">
+                        <h2 class="text-2xl font-bold text-gray-800">National Super League Table</h2>
+                        <p class="text-gray-600 mt-2">Current standings for the 2024/25 season</p>
+                    </div>
+                    
+                    <!-- Desktop Table -->
+                    <div class="hidden md:block overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-primary text-white">
+                                <tr>
+                                    <th class="py-3 px-4 text-left text-sm">Pos</th>
+                                    <th class="py-3 px-4 text-left text-sm">Club</th>
+                                    <th class="py-3 px-4 text-center text-sm">P</th>
+                                    <th class="py-3 px-4 text-center text-sm">W</th>
+                                    <th class="py-3 px-4 text-center text-sm">D</th>
+                                    <th class="py-3 px-4 text-center text-sm">L</th>
+                                    <th class="py-3 px-4 text-center text-sm">GF</th>
+                                    <th class="py-3 px-4 text-center text-sm">GA</th>
+                                    <th class="py-3 px-4 text-center text-sm">GD</th>
+                                    <th class="py-3 px-4 text-center text-sm">Pts</th>
+                                    <th class="py-3 px-4 text-center text-sm">Form</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="team in leagueTable" :key="team.id">
+                                    <tr class="border-b border-gray-200 hover:bg-gray-50 transition-colors"
+                                        :class="team.id === 15 ? 'bg-red-50 font-semibold' : ''">
+                                        <td class="py-3 px-4">
+                                            <div class="flex items-center">
+                                                <span class="font-medium" x-text="team.position"></span>
+                                                <div class="ml-2">
+                                                    <template x-if="team.positionChange > 0">
+                                                        <i class="fas fa-chevron-up text-green-500 text-xs" aria-hidden="true"></i>
+                                                    </template>
+                                                    <template x-if="team.positionChange < 0">
+                                                        <i class="fas fa-chevron-down text-red-500 text-xs" aria-hidden="true"></i>
+                                                    </template>
+                                                    <template x-if="team.positionChange === 0">
+                                                        <i class="fas fa-minus text-gray-400 text-xs" aria-hidden="true"></i>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 rounded-full mr-3 flex-shrink-0 bg-gray-200 overflow-hidden">
+                                                    <img :src="team.logo" :alt="team.name" class="w-full h-full object-cover">
+                                                </div>
+                                                <span class="font-medium" x-text="team.name"></span>
+                                            </div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center" x-text="team.played"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.won"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.drawn"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.lost"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.goalsFor"></td>
+                                        <td class="py-3 px-4 text-center" x-text="team.goalsAgainst"></td>
+                                        <td class="py-3 px-4 text-center font-medium"
+                                            :class="team.goalDifference > 0 ? 'text-green-600' : team.goalDifference < 0 ? 'text-red-600' : 'text-gray-600'"
+                                            x-text="team.goalDifference > 0 ? '+' + team.goalDifference : team.goalDifference">
+                                        </td>
+                                        <td class="py-3 px-4 text-center font-bold" x-text="team.points"></td>
+                                        <td class="py-3 px-4">
+                                            <div class="flex justify-center space-x-1">
+                                                <template x-for="result in team.form" :key="result.id">
+                                                    <div class="w-5 h-5 rounded-full text-xs flex items-center justify-center text-white"
+                                                        :class="result === 'W' ? 'bg-green-500' : 
+                                                              result === 'D' ? 'bg-yellow-500' : 'bg-red-500'">
+                                                        <span x-text="result"></span>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Mobile Table -->
+                    <div class="md:hidden">
+                        <div class="divide-y divide-gray-200">
+                            <template x-for="team in leagueTable" :key="team.id">
+                                <div class="p-4 hover:bg-gray-50 transition-colors"
+                                    :class="team.id === 15 ? 'bg-red-50 font-semibold' : ''">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <div class="flex items-center">
+                                            <span class="font-bold mr-2" x-text="team.position"></span>
+                                            <div class="w-8 h-8 rounded-full mr-2 bg-gray-200 overflow-hidden">
+                                                <img :src="team.logo" :alt="team.name" class="w-full h-full object-cover">
+                                            </div>
+                                            <span class="font-medium" x-text="team.name"></span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <span class="font-bold mr-2" x-text="team.points"></span>
+                                            <span class="text-xs text-gray-500">PTS</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between text-sm text-gray-600">
+                                        <div class="flex space-x-3">
+                                            <span>P: <span x-text="team.played"></span></span>
+                                            <span>W: <span x-text="team.won"></span></span>
+                                            <span>D: <span x-text="team.drawn"></span></span>
+                                            <span>L: <span x-text="team.lost"></span></span>
+                                        </div>
+                                        <div class="flex space-x-1">
+                                            <template x-for="result in team.form.slice(0, 5)" :key="result.id">
+                                                <div class="w-4 h-4 rounded-full text-xs flex items-center justify-center text-white"
+                                                    :class="result === 'W' ? 'bg-green-500' : 
+                                                          result === 'D' ? 'bg-yellow-500' : 'bg-red-500'">
+                                                    <span x-text="result"></span>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Tab -->
+        <div x-show="activeTab === 'gallery'" x-cloak>
+            <!-- Gallery Header -->
+            <div class="mb-8" aria-labelledby="gallery-header-heading">
+                <div class="bg-gradient-to-r from-primary to-red-800 rounded-2xl p-6 md:p-8 text-white shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div>
+                            <h1 id="gallery-header-heading" class="text-2xl md:text-4xl font-black mb-2">Gallery</h1>
+                            <p class="text-lg opacity-90">Capturing the moments that define The Bees</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                                <div class="text-2xl font-bold" x-text="galleryImages.length"></div>
+                                <div class="text-sm opacity-90">Photos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Filters -->
+            <div class="mb-8" role="navigation" aria-label="Gallery filters">
+                <div class="flex flex-wrap gap-2">
+                    <button @click="activeGalleryCategory = ''"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeGalleryCategory === '' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        All
+                    </button>
+                    <template x-for="category in galleryCategories" :key="category">
+                        <button @click="activeGalleryCategory = category"
+                            class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                            :class="activeGalleryCategory === category ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'"
+                            x-text="category"></button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <template x-for="image in getFilteredGalleryImages()" :key="image.id">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden group cursor-pointer hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <div class="h-48 bg-gray-200 flex items-center justify-center">
+                                <i class="fas fa-image text-gray-400 text-4xl" aria-hidden="true"></i>
+                            </div>
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button class="bg-white text-primary w-10 h-10 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-expand" aria-hidden="true"></i>
+                                    <span class="sr-only">View image</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-bold text-gray-800" x-text="image.title"></h3>
+                                <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full" x-text="image.category"></span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-3" x-text="image.description"></p>
+                            <div class="flex justify-between items-center text-xs text-gray-500">
+                                <span x-text="image.date"></span>
+                                <div class="flex items-center">
+                                    <i class="fas fa-heart text-red-500 mr-1" aria-hidden="true"></i>
+                                    <span x-text="image.likes"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="getFilteredGalleryImages().length === 0" class="text-center py-12">
+                <i class="fas fa-images text-gray-300 text-5xl mb-4" aria-hidden="true"></i>
+                <h3 class="text-xl font-bold text-gray-700 mb-2">No images found</h3>
+                <p class="text-gray-500 max-w-md mx-auto">There are no images in the selected category. Try choosing a different category.</p>
+            </div>
+        </div>
+
+        <!-- Shop Tab -->
+        <div x-show="activeTab === 'shop'" x-cloak>
+            <!-- Shop Header -->
+            <div class="mb-8" aria-labelledby="shop-header-heading">
+                <div class="bg-gradient-to-r from-primary to-red-800 rounded-2xl p-6 md:p-8 text-white shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div>
+                            <h1 id="shop-header-heading" class="text-2xl md:text-4xl font-black mb-2">Club Shop</h1>
+                            <p class="text-lg opacity-90">Official Kabati Youth FC merchandise</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <div class="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-2 text-center">
+                                <div class="text-2xl font-bold" x-text="products.length"></div>
+                                <div class="text-sm opacity-90">Products</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shop Navigation -->
+            <div class="mb-8" role="navigation" aria-label="Shop categories">
+                <div class="flex flex-wrap gap-2">
+                    <button @click="activeShopCategory = ''"
+                        class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                        :class="activeShopCategory === '' ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'">
+                        All Products
+                    </button>
+                    <template x-for="category in shopCategories" :key="category">
+                        <button @click="activeShopCategory = category"
+                            class="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-sm md:text-base"
+                            :class="activeShopCategory === category ? 'bg-primary text-white' : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200'"
+                            x-text="category"></button>
+                    </template>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <template x-for="product in getFilteredProducts()" :key="product.id">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+                        <div class="relative overflow-hidden">
+                            <div class="h-48 bg-gray-200 flex items-center justify-center">
+                                <i class="fas fa-tshirt text-gray-400 text-4xl" aria-hidden="true"></i>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded-full">
+                                <span x-text="product.category"></span>
+                            </div>
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <button @click="addToCart(product)"
+                                    class="bg-white text-primary font-medium py-2 px-4 rounded-full transition flex items-center">
+                                    <i class="fas fa-shopping-cart mr-2" aria-hidden="true"></i>
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-gray-800 mb-2" x-text="product.name"></h3>
+                            <p class="text-gray-600 text-sm mb-3" x-text="product.description"></p>
+                            <div class="flex justify-between items-center">
+                                <div class="text-primary font-bold text-lg" x-text="'KSh ' + product.price"></div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-star text-yellow-400 mr-1" aria-hidden="true"></i>
+                                    <span x-text="product.rating"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Empty State -->
+            <div x-show="getFilteredProducts().length === 0" class="text-center py-12">
+                <i class="fas fa-shopping-bag text-gray-300 text-5xl mb-4" aria-hidden="true"></i>
+                <h3 class="text-xl font-bold text-gray-700 mb-2">No products found</h3>
+                <p class="text-gray-500 max-w-md mx-auto">There are no products in the selected category. Try choosing a different category.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div x-show="showCart" class="fixed inset-0 z-50 overflow-hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <!-- Background overlay -->
+        <div class="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" @click="showCart = false" aria-hidden="true"></div>
+
+        <!-- Slide-over panel -->
+        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div class="w-screen max-w-md">
+                <div class="h-full flex flex-col bg-white shadow-xl">
+                    <div class="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
+                        <div class="flex items-start justify-between">
+                            <h2 id="slide-over-title" class="text-lg font-medium text-gray-900">Shopping Cart</h2>
+                            <div class="ml-3 h-7 flex items-center">
+                                <button type="button" class="-m-2 p-2 text-gray-400 hover:text-gray-500" @click="showCart = false">
+                                    <span class="sr-only">Close panel</span>
+                                    <i class="fas fa-times" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <div class="flow-root">
+                                <ul role="list" class="-my-6 divide-y divide-gray-200">
+                                    <template x-for="item in cartItems" :key="item.id">
+                                        <li class="py-6 flex">
+                                            <div class="flex-shrink-0 w-24 h-24 rounded-md overflow-hidden border border-gray-200">
+                                                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                                    <i class="fas fa-tshirt text-gray-400" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="ml-4 flex-1 flex flex-col">
+                                                <div>
+                                                    <div class="flex justify-between text-base font-medium text-gray-900">
+                                                        <h3 x-text="item.name"></h3>
+                                                        <p class="ml-4" x-text="'KSh ' + (item.price * item.quantity)"></p>
+                                                    </div>
+                                                    <p class="mt-1 text-sm text-gray-500" x-text="item.category"></p>
+                                                </div>
+                                                <div class="flex-1 flex items-end justify-between text-sm">
+                                                    <div class="flex items-center border border-gray-300 rounded-lg">
+                                                        <button @click="decreaseQuantity(item)" class="px-3 py-1 text-gray-600 hover:text-gray-800">
+                                                            <i class="fas fa-minus" aria-hidden="true"></i>
+                                                            <span class="sr-only">Decrease quantity</span>
+                                                        </button>
+                                                        <span class="px-3 py-1" x-text="item.quantity"></span>
+                                                        <button @click="increaseQuantity(item)" class="px-3 py-1 text-gray-600 hover:text-gray-800">
+                                                            <i class="fas fa-plus" aria-hidden="true"></i>
+                                                            <span class="sr-only">Increase quantity</span>
+                                                        </button>
+                                                    </div>
+
+                                                    <button type="button" @click="removeFromCart(item)" class="font-medium text-primary hover:text-red-700">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                        <div class="flex justify-between text-base font-medium text-gray-900 mb-4">
+                            <p>Subtotal</p>
+                            <p x-text="'KSh ' + cartTotal"></p>
+                        </div>
+                        <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                        <div class="mt-6">
+                            <button class="w-full bg-primary border border-transparent rounded-md shadow-sm py-3 px-4 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                Checkout
+                            </button>
+                        </div>
+                        <div class="mt-6 flex justify-center text-sm text-center text-gray-500">
+                            <p>
+                                or
+                                <button type="button" class="text-primary font-medium hover:text-red-700 ml-1" @click="showCart = false">
+                                    Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-accent text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Club Info -->
+                <div>
+                    <img src="tmlogo/kabati.png" alt="Kabati Youth FC Logo" class="h-16 mb-4">
+                    <h3 class="text-xl font-bold mb-4">Kabati Youth FC</h3>
+                    <p class="text-gray-300 mb-4">The Bees - Proudly representing Murang'a in the National Super League.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition" aria-label="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" @click="activeTab = 'home'" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="#" @click="activeTab = 'about'" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                        <li><a href="#" @click="activeTab = 'team-first'" class="text-gray-300 hover:text-white transition">First Team</a></li>
+                        <li><a href="#" @click="activeTab = 'news-fixtures'" class="text-gray-300 hover:text-white transition">Fixtures</a></li>
+                        <li><a href="#" @click="activeTab = 'shop'" class="text-gray-300 hover:text-white transition">Shop</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary" aria-hidden="true"></i>
+                            <span>Mukerenju Grounds, Murang'a, Kenya</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-primary" aria-hidden="true"></i>
+                            <span>+254 712 345 678</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-primary" aria-hidden="true"></i>
+                            <span>info@kabatiyouthfc.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-300 mb-4">Subscribe to get updates on matches, tickets, and club news.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Your email address" 
+                               class="w-full px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <button type="submit" class="w-full bg-primary hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Kabati Youth FC. All rights reserved.</p>
+                <div class="flex space-x-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function kabatiyouthApp() {
+            return {
+                // App State
+                activeTab: 'home',
+                mobileMenuOpen: false,
+                teamMenuOpen: false,
+                newsMenuOpen: false,
+                showCart: false,
+                activePosition: '',
+                activeGalleryCategory: '',
+                activeShopCategory: '',
+
+                // Cart State
+                cartItems: [],
+
+                // Sample Data
+                recentResults: [
+                    {
+                        id: 1,
+                        homeTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        awayTeam: { name: 'Mwatate United', logo: 'tmlogo/mwatate.png' },
+                        homeScore: 2,
+                        awayScore: 0,
+                        date: 'Oct 12, 2024'
+                    },
+                    {
+                        id: 2,
+                        homeTeam: { name: 'Kibera Black Stars', logo: 'tmlogo/kibera.png' },
+                        awayTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        homeScore: 1,
+                        awayScore: 1,
+                        date: 'Oct 5, 2024'
+                    },
+                    {
+                        id: 3,
+                        homeTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        awayTeam: { name: 'Mombasa Elite', logo: 'tmlogo/mombasa.png' },
+                        homeScore: 3,
+                        awayScore: 1,
+                        date: 'Sep 28, 2024'
+                    }
+                ],
+
+                clubNews: [
+                    {
+                        id: 1,
+                        title: 'Kabati Youth Promoted to National Super League',
+                        excerpt: 'The Bees secure historic promotion after dominant season in the FKF Division One.',
+                        category: 'Promotion',
+                        date: 'Oct 15, 2024',
+                        icon: 'fas fa-trophy'
+                    },
+                    {
+                        id: 2,
+                        title: 'Youth Academy Launches Talent Search',
+                        excerpt: 'Open trials for U-15 and U-17 teams scheduled for next month at Mukerenju Grounds.',
+                        category: 'Academy',
+                        date: 'Oct 10, 2024',
+                        icon: 'fas fa-users'
+                    },
+                    {
+                        id: 3,
+                        title: 'Stadium Upgrades Underway',
+                        excerpt: 'Major improvements planned for Mukerenju Grounds to meet NSL standards.',
+                        category: 'Facilities',
+                        date: 'Oct 5, 2024',
+                        icon: 'fas fa-hard-hat'
+                    }
+                ],
+
+                leagueTable: [
+                    { id: 1, position: 1, name: 'Mwatate United', played: 3, won: 3, drawn: 0, lost: 0, goalsFor: 7, goalsAgainst: 1, goalDifference: 6, points: 9, form: ['W', 'W', 'W'], positionChange: 0, logo: 'tmlogo/mwatate.png' },
+                    { id: 2, position: 2, name: 'Kibera Black Stars', played: 3, won: 2, drawn: 1, lost: 0, goalsFor: 5, goalsAgainst: 2, goalDifference: 3, points: 7, form: ['W', 'D', 'W'], positionChange: 1, logo: 'tmlogo/kibera.png' },
+                    { id: 3, position: 3, name: 'Mombasa Elite', played: 3, won: 2, drawn: 0, lost: 1, goalsFor: 6, goalsAgainst: 4, goalDifference: 2, points: 6, form: ['W', 'L', 'W'], positionChange: -1, logo: 'tmlogo/mombasa.png' },
+                    { id: 4, position: 4, name: 'Luanda Villa', played: 3, won: 1, drawn: 2, lost: 0, goalsFor: 4, goalsAgainst: 3, goalDifference: 1, points: 5, form: ['D', 'D', 'W'], positionChange: 2, logo: 'tmlogo/luanda.png' },
+                    { id: 15, position: 5, name: 'Kabati Youth', played: 3, won: 1, drawn: 1, lost: 1, goalsFor: 6, goalsAgainst: 3, goalDifference: 3, points: 4, form: ['W', 'D', 'L'], positionChange: 0, logo: 'tmlogo/logo.png' },
+                    { id: 6, position: 6, name: 'Naivas FC', played: 3, won: 1, drawn: 1, lost: 1, goalsFor: 3, goalsAgainst: 3, goalDifference: 0, points: 4, form: ['L', 'W', 'D'], positionChange: -2, logo: 'tmlogo/naivas.png' },
+                    { id: 7, position: 7, name: 'Kisumu All Stars', played: 3, won: 1, drawn: 0, lost: 2, goalsFor: 3, goalsAgainst: 5, goalDifference: -2, points: 3, form: ['L', 'W', 'L'], positionChange: 1, logo: 'tmlogo/kisumu.png' },
+                    { id: 8, position: 8, name: 'APS Bomet', played: 3, won: 0, drawn: 1, lost: 2, goalsFor: 2, goalsAgainst: 6, goalDifference: -4, points: 1, form: ['L', 'D', 'L'], positionChange: -1, logo: 'tmlogo/aps.png' }
+                ],
+
+                featuredProducts: [
+                    { id: 1, name: 'Home Jersey 2024', price: 2500, category: 'Jerseys', image: 'tmlogo/jersey1.jpg', description: 'Official home jersey for the 2024 season' },
+                    { id: 2, name: 'Training Kit', price: 1800, category: 'Training', image: 'tmlogo/training.jpg', description: 'Professional training kit for players and fans' },
+                    { id: 3, name: 'Club Scarf', price: 800, category: 'Accessories', image: 'tmlogo/scarf.jpg', description: 'Official club scarf in team colors' },
+                    { id: 4, name: 'Team Cap', price: 1200, category: 'Accessories', image: 'tmlogo/cap.jpg', description: 'Adjustable cap with club logo' }
+                ],
+
+                // Team Data
+                firstTeamPlayers: [
+                    { id: 1, name: 'John Kamau', position: 'Goalkeeper', number: 1, nationality: 'Kenyan' },
+                    { id: 2, name: 'David Ochieng', position: 'Defender', number: 4, nationality: 'Kenyan' },
+                    { id: 3, name: 'Michael Odhiambo', position: 'Midfielder', number: 8, nationality: 'Kenyan' },
+                    { id: 4, name: 'Brian Otieno', position: 'Forward', number: 11, nationality: 'Kenyan' },
+                    { id: 5, name: 'Samuel Mwangi', position: 'Defender', number: 5, nationality: 'Kenyan' },
+                    { id: 6, name: 'Peter Kariuki', position: 'Midfielder', number: 6, nationality: 'Kenyan' },
+                    { id: 7, name: 'James Njoroge', position: 'Forward', number: 9, nationality: 'Kenyan' }
+                ],
+
+                youthTeamPlayers: [
+                    { id: 1, name: 'Kevin Maina', position: 'Goalkeeper', number: 22, nationality: 'Kenyan' },
+                    { id: 2, name: 'Eric Mutua', position: 'Defender', number: 3, nationality: 'Kenyan' },
+                    { id: 3, name: 'Victor Omondi', position: 'Midfielder', number: 17, nationality: 'Kenyan' },
+                    { id: 4, name: 'Brian Kimani', position: 'Forward', number: 20, nationality: 'Kenyan' }
+                ],
+
+                womenTeamPlayers: [
+                    { id: 1, name: 'Grace Wanjiku', position: 'Goalkeeper', number: 1, nationality: 'Kenyan' },
+                    { id: 2, name: 'Mary Achieng', position: 'Defender', number: 4, nationality: 'Kenyan' },
+                    { id: 3, name: 'Sarah Atieno', position: 'Midfielder', number: 10, nationality: 'Kenyan' },
+                    { id: 4, name: 'Joyce Mumbi', position: 'Forward', number: 9, nationality: 'Kenyan' }
+                ],
+
+                firstTeamStaff: [
+                    { id: 1, name: 'James Kariuki', role: 'Head Coach' },
+                    { id: 2, name: 'Robert Mwangi', role: 'Assistant Coach' },
+                    { id: 3, name: 'Dr. Sarah Wambui', role: 'Team Doctor' }
+                ],
+
+                youthTeamStaff: [
+                    { id: 1, name: 'Paul Otieno', role: 'Youth Coach' },
+                    { id: 2, name: 'Elizabeth Njeri', role: 'Assistant Coach' }
+                ],
+
+                womenTeamStaff: [
+                    { id: 1, name: 'Susan Akinyi', role: 'Head Coach' },
+                    { id: 2, name: 'Margaret Adhiambo', role: 'Assistant Coach' }
+                ],
+
+                // News Data
+                matchResults: [
+                    {
+                        id: 1,
+                        homeTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        awayTeam: { name: 'Mwatate United', logo: 'tmlogo/mwatate.png' },
+                        homeScore: 2,
+                        awayScore: 0,
+                        date: 'Oct 12, 2024',
+                        time: '15:00 EAT',
+                        venue: 'Mukerenju Grounds',
+                        competition: 'National Super League',
+                        result: 'W'
+                    },
+                    {
+                        id: 2,
+                        homeTeam: { name: 'Kibera Black Stars', logo: 'tmlogo/kibera.png' },
+                        awayTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        homeScore: 1,
+                        awayScore: 1,
+                        date: 'Oct 5, 2024',
+                        time: '14:00 EAT',
+                        venue: 'Ligi Ndogo Grounds',
+                        competition: 'National Super League',
+                        result: 'D'
+                    },
+                    {
+                        id: 3,
+                        homeTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        awayTeam: { name: 'Mombasa Elite', logo: 'tmlogo/mombasa.png' },
+                        homeScore: 3,
+                        awayScore: 1,
+                        date: 'Sep 28, 2024',
+                        time: '16:00 EAT',
+                        venue: 'Mukerenju Grounds',
+                        competition: 'National Super League',
+                        result: 'W'
+                    }
+                ],
+
+                upcomingFixtures: [
+                    {
+                        id: 1,
+                        homeTeam: { name: 'Luanda Villa', logo: 'tmlogo/luanda.png' },
+                        awayTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        date: 'Oct 19, 2024',
+                        time: '12:00 EAT',
+                        venue: 'Luanda Villa Ground',
+                        competition: 'National Super League',
+                        round: 'Matchday 4'
+                    },
+                    {
+                        id: 2,
+                        homeTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        awayTeam: { name: 'Naivas FC', logo: 'tmlogo/naivas.png' },
+                        date: 'Oct 26, 2024',
+                        time: '15:00 EAT',
+                        venue: 'Mukerenju Grounds',
+                        competition: 'National Super League',
+                        round: 'Matchday 5'
+                    },
+                    {
+                        id: 3,
+                        homeTeam: { name: 'Kisumu All Stars', logo: 'tmlogo/kisumuallstars.png' },
+                        awayTeam: { name: 'Kabati Youth', logo: 'tmlogo/kabati.png' },
+                        date: 'Nov 2, 2024',
+                        time: '14:00 EAT',
+                        venue: 'Moi Stadium Kisumu',
+                        competition: 'National Super League',
+                        round: 'Matchday 6'
+                    }
+                ],
+
+                // Gallery Data
+                galleryImages: [
+                    { id: 1, title: 'Match Day Action', description: 'Intense moments from our last home game', category: 'Matches', date: 'Oct 12, 2024', likes: 24 },
+                    { id: 2, title: 'Training Session', description: 'Players working hard during morning training', category: 'Training', date: 'Oct 10, 2024', likes: 18 },
+                    { id: 3, title: 'Team Celebration', description: 'Celebrating our promotion to NSL', category: 'Events', date: 'Sep 28, 2024', likes: 42 },
+                    { id: 4, title: 'Youth Academy', description: 'Young talents in development program', category: 'Academy', date: 'Sep 20, 2024', likes: 15 },
+                    { id: 5, title: 'Community Outreach', description: 'Players visiting local schools', category: 'Community', date: 'Sep 15, 2024', likes: 31 },
+                    { id: 6, title: 'Stadium Upgrades', description: 'Progress on our home ground improvements', category: 'Facilities', date: 'Sep 10, 2024', likes: 12 }
+                ],
+
+                galleryCategories: ['Matches', 'Training', 'Events', 'Academy', 'Community', 'Facilities'],
+
+                // Shop Data
+                products: [
+                    { id: 1, name: 'Home Jersey 2024', price: 2500, category: 'Jerseys', description: 'Official home jersey for the 2024 season', rating: 4.8 },
+                    { id: 2, name: 'Away Jersey 2024', price: 2500, category: 'Jerseys', description: 'Official away jersey for the 2024 season', rating: 4.7 },
+                    { id: 3, name: 'Training Kit', price: 1800, category: 'Training', description: 'Professional training kit for players and fans', rating: 4.5 },
+                    { id: 4, name: 'Training Shorts', price: 1200, category: 'Training', description: 'Comfortable training shorts', rating: 4.3 },
+                    { id: 5, name: 'Club Scarf', price: 800, category: 'Accessories', description: 'Official club scarf in team colors', rating: 4.9 },
+                    { id: 6, name: 'Team Cap', price: 1200, category: 'Accessories', description: 'Adjustable cap with club logo', rating: 4.6 },
+                    { id: 7, name: 'Water Bottle', price: 600, category: 'Accessories', description: 'Durable water bottle with club branding', rating: 4.4 },
+                    { id: 8, name: 'Keychain', price: 300, category: 'Accessories', description: 'Metal keychain with club emblem', rating: 4.7 }
+                ],
+
+                shopCategories: ['Jerseys', 'Training', 'Accessories'],
+
+                // Computed Properties
+                get cartTotal() {
+                    return this.cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+                },
+
+                // Methods
+                getTeamTitle() {
+                    switch (this.activeTab) {
+                        case 'team-first': return 'First Team';
+                        case 'team-youth': return 'Youth Team';
+                        case 'team-women': return 'Women Team';
+                        default: return 'Team';
+                    }
+                },
+
+                getTeamSubtitle() {
+                    switch (this.activeTab) {
+                        case 'team-first': return 'Our senior squad competing in the National Super League';
+                        case 'team-youth': return 'Developing the next generation of football stars';
+                        case 'team-women': return 'Empowering women through football excellence';
+                        default: return '';
+                    }
+                },
+
+                getTeamStats() {
+                    switch (this.activeTab) {
+                        case 'team-first': return { players: 25, matches: 3, wins: 1, goals: 6, cleanSheets: 1 };
+                        case 'team-youth': return { players: 18, matches: 5, wins: 4, goals: 12, cleanSheets: 2 };
+                        case 'team-women': return { players: 20, matches: 4, wins: 3, goals: 8, cleanSheets: 1 };
+                        default: return { players: 0, matches: 0, wins: 0, goals: 0, cleanSheets: 0 };
+                    }
+                },
+
+                getTeamPlayers() {
+                    switch (this.activeTab) {
+                        case 'team-first': return this.firstTeamPlayers;
+                        case 'team-youth': return this.youthTeamPlayers;
+                        case 'team-women': return this.womenTeamPlayers;
+                        default: return [];
+                    }
+                },
+
+                getTeamStaff() {
+                    switch (this.activeTab) {
+                        case 'team-first': return this.firstTeamStaff;
+                        case 'team-youth': return this.youthTeamStaff;
+                        case 'team-women': return this.womenTeamStaff;
+                        default: return [];
+                    }
+                },
+
+                getTeamPositions() {
+                    const players = this.getTeamPlayers();
+                    return [...new Set(players.map(player => player.position))];
+                },
+
+                getFilteredPlayers() {
+                    const players = this.getTeamPlayers();
+                    if (!this.activePosition) return players;
+                    return players.filter(player => player.position === this.activePosition);
+                },
+
+                getTeamMatches() {
+                    // Simplified for demo - in a real app, this would fetch team-specific matches
+                    return this.upcomingFixtures.slice(0, 3);
+                },
+
+                getNewsTitle() {
+                    switch (this.activeTab) {
+                        case 'news-results': return 'Match Results';
+                        case 'news-fixtures': return 'Upcoming Fixtures';
+                        case 'news-table': return 'League Table';
+                        default: return 'Latest News';
+                    }
+                },
+
+                getNewsSubtitle() {
+                    switch (this.activeTab) {
+                        case 'news-results': return 'Recent match outcomes and performances';
+                        case 'news-fixtures': return 'Upcoming matches and ticket information';
+                        case 'news-table': return 'Current National Super League standings';
+                        default: return '';
+                    }
+                },
+
+                getNewsStats() {
+                    switch (this.activeTab) {
+                        case 'news-results': return { articles: this.matchResults.length };
+                        case 'news-fixtures': return { articles: this.upcomingFixtures.length };
+                        case 'news-table': return { articles: this.leagueTable.length };
+                        default: return { articles: 0 };
+                    }
+                },
+
+                getFilteredGalleryImages() {
+                    if (!this.activeGalleryCategory) return this.galleryImages;
+                    return this.galleryImages.filter(image => image.category === this.activeGalleryCategory);
+                },
+
+                getFilteredProducts() {
+                    if (!this.activeShopCategory) return this.products;
+                    return this.products.filter(product => product.category === this.activeShopCategory);
+                },
+
+                addToCart(product) {
+                    const existingItem = this.cartItems.find(item => item.id === product.id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        this.cartItems.push({
+                            ...product,
+                            quantity: 1
+                        });
+                    }
+                    
+                    this.showCart = true;
+                },
+
+                removeFromCart(item) {
+                    this.cartItems = this.cartItems.filter(cartItem => cartItem.id !== item.id);
+                },
+
+                increaseQuantity(item) {
+                    item.quantity += 1;
+                },
+
+                decreaseQuantity(item) {
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        this.removeFromCart(item);
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
