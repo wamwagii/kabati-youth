@@ -1,0 +1,205 @@
+ [x-cloak] {
+            display: none !important;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Updated color scheme - Red, White, Black for The Bees */
+        .bg-primary {
+            background-color: #dc2626;
+            /* Red */
+        }
+
+        .bg-secondary {
+            background-color: #ffffff;
+            /* White */
+        }
+
+        .bg-accent {
+            background-color: #000000;
+            /* Black */
+        }
+
+        .text-primary {
+            color: #dc2626;
+        }
+
+        .text-secondary {
+            color: #ffffff;
+        }
+
+        .text-accent {
+            color: #000000;
+        }
+
+        .border-primary {
+            border-color: #dc2626;
+        }
+
+        .border-secondary {
+            border-color: #ffffff;
+        }
+
+        .border-accent {
+            border-color: #000000;
+        }
+
+        /* Accessibility improvements */
+        .text-red-100 {
+            color: #fef2f2;
+            /* Lighter red for better contrast */
+        }
+
+        .text-red-200 {
+            color: #fecaca;
+            /* Even lighter for dark backgrounds */
+        }
+
+        .text-gray-600 {
+            color: #4b5563;
+            /* Darker gray for better readability */
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+            /* 14px base */
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+            /* 12px base */
+        }
+
+        /* Animation for notifications */
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #dc2626;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Ticket QR Code styling */
+        .qr-code {
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            border: 2px dashed #dc2626;
+        }
+
+        /* Membership badge styles */
+        .membership-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .membership-basic {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .membership-premium {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #78350f;
+        }
+
+        .membership-vip {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+
+        .membership-lifetime {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .text-sm {
+                font-size: 0.875rem;
+                /* Ensure minimum readable size */
+            }
+
+            .text-xs {
+                font-size: 0.75rem;
+                /* Ensure minimum readable size */
+            }
+
+            /* Increase font sizes for better mobile readability */
+            .mobile-text-lg {
+                font-size: 1.125rem;
+            }
+
+            .mobile-text-base {
+                font-size: 1rem;
+            }
+        }
+
+        /* Focus styles for better keyboard navigation */
+        button:focus,
+        a:focus {
+            outline: 2px solid #dc2626;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .bg-primary {
+                background-color: #b91c1c;
+            }
+
+            .text-primary {
+                color: #b91c1c;
+            }
+
+            .text-gray-600 {
+                color: #1f2937;
+            }
+        }
+
+        /* Reduced motion support */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
