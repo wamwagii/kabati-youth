@@ -1628,23 +1628,91 @@
                         </button>
                     </div>
 
-                    <!-- Players Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <template x-for="player in getTeamPlayers(teamTab)" :key="player.id">
-                            <div class="bg-white rounded-xl shadow-lg p-6 hover-lift">
-                                <div class="flex items-center space-x-4">
-                                    <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
-                                        <i class="fas fa-user text-gray-400 text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold text-gray-800" x-text="player.name"></h3>
-                                        <div class="text-sm text-gray-600" x-text="player.position"></div>
-                                        <div class="text-xs text-gray-500" x-text="player.nationality"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <template x-for="player in getTeamPlayers(teamTab)" :key="player.id">
+        <div class="relative overflow-hidden rounded-xl shadow-lg hover-lift aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5]">
+            <!-- Background Container -->
+            <div class="absolute inset-0">
+                <!-- Player Image -->
+                <img :src="'squad/player-' + player.id + '.jpg'" 
+                     :alt="player.name"
+                     class="w-full h-full object-cover"
+                     @error="handleImageError($event, player.id)">
+                
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
+            </div>
+            
+            <!-- Content Container -->
+            <div class="relative h-full flex flex-col justify-end p-6 text-white">
+                <!-- Player Name -->
+                <h3 class="font-bold text-xl md:text-2xl mb-2 drop-shadow-lg" x-text="player.name"></h3>
+                
+                <!-- Player Info -->
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-red-900 flex items-center justify-center mr-3">
+                            <i class="fas fa-futbol text-white"></i>
+                        </div>
+                        <span class="font-semibold" x-text="player.position"></span>
                     </div>
+                    
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-3 text-red-200"></i>
+                        <span x-text="player.nationality"></span>
+                    </div>
+                    
+                    <!-- Player Number -->
+                    <div class="absolute top-4 right-4">
+                        <div class="bg-red-900 text-white w-12 h-12 rounded-full flex items-center justify-center border-2 border-white shadow-lg">
+                            <span class="font-bold text-lg" x-text="player.number || '#'"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats (Optional) -->
+                <div class="mt-4 pt-4 border-t border-white/20 grid grid-cols-3 gap-2 text-center text-sm">
+                    <div>
+                        <div class="font-bold">Age</div>
+                        <div x-text="player.age || '--'"></div>
+                    </div>
+                    <div>
+                        <div class="font-bold">Height</div>
+                        <div x-text="player.height || '--'"></div>
+                    </div>
+                    <div>
+                        <div class="font-bold">Apps</div>
+                        <div x-text="player.appearances || '0'"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hover Effect -->
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <button class="bg-red-900 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform scale-90 group-hover:scale-100">
+                    View Full Profile
+                </button>
+            </div>
+        </div>
+    </template>
+</div>
+
+<!-- Add this JavaScript function for handling missing images -->
+<script>
+function handleImageError(event, playerId) {
+    // Replace broken image with team color background
+    event.target.style.display = 'none';
+    event.target.parentElement.innerHTML = `
+        <div class="w-full h-full bg-gradient-to-br from-red-900 to-black flex items-center justify-center">
+            <div class="text-center text-white">
+                <i class="fas fa-user text-6xl opacity-50 mb-4"></i>
+                <p class="font-bold">Player Image</p>
+                <p class="text-sm opacity-75">Coming Soon</p>
+            </div>
+        </div>
+    `;
+}
+</script>
                 </div>
             </section>
         </template>
